@@ -1,0 +1,13 @@
+
+apply plugin: 'org.junit.platform.gradle.plugin'
+apply plugin: 'java'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'io.reactivex.rxjava2:rxkotlin:2.0.2'
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.0.0-M4")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0-M4")
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
