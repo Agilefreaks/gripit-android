@@ -1,15 +1,19 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.1.2-2'
+    ext.kotlinVersion = '1.1.2-3'
+    ext.junitPluginVersion = '1.0.0-M4'
+    ext.jupiterVersion = '5.0.0-M4'
+
     repositories {
         jcenter()
         mavenCentral()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "de.mannodermaus.gradle.plugins:android-junit5:$junitPluginVersion"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -25,4 +29,31 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    // App version
+    androidVersionCode = 100
+    androidVersionName = '1.' + androidVersionCode + '.' + (new Date()).format('yyyyMMdd')
+
+    // Instrumentation test runner
+    testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
+
+    // Sdk and tools
+    minSdkVersion = 15
+    targetSdkVersion = 25
+    compileSdkVersion = 25
+    buildToolsVersion = '25.0.2'
+
+    // Libraries
+    supportLibraryVersion = '25.3.1'
+    constraintLayoutVersion = '1.0.2'
+    daggerVersion = '2.10'
+    butterKnifeVersion = '8.5.1'
+    rxVersion = '2.0.2'
+
+    // Testing
+    assertjVersion = '3.6.2'
+    mockitoVersion = '2.8.9'
+    espressoVersion = '2.2.2'
 }
