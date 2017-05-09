@@ -20,6 +20,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.github.ben-manes.versions' version '0.14.0'
+}
+
 allprojects {
     repositories {
         jcenter()
@@ -53,7 +57,7 @@ ext {
     rxVersion = '2.0.2'
 
     // Testing
-    assertjVersion = '3.6.2'
+    assertjVersion = '3.7.0'
     mockitoVersion = '2.8.9'
     espressoVersion = '2.2.2'
 }
