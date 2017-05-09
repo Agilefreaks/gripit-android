@@ -38,8 +38,6 @@ junitPlatform {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
     // App's dependencies
     compile project(':domain')
     compile project(':data')

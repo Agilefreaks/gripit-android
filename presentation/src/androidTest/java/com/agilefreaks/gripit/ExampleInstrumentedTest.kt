@@ -22,6 +22,6 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
 
-        assertEquals("com.agilefreaks.gripit", appContext.packageName)
+        assertEquals("com.agilefreaks.gripit.dev", appContext.packageName)
     }
 }
