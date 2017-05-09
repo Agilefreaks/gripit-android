@@ -1,37 +1,40 @@
 apply plugin: 'com.android.library'
+apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionCode rootProject.ext.androidVersionCode
+        versionName rootProject.ext.androidVersionName
 
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+}
+
+junitPlatform {
+    jupiterVersion rootProject.ext.jupiterVersion
+    platformVersion rootProject.ext.junitPluginVersion
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+
+    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
+    compile "io.reactivex.rxjava2:rxkotlin:$rxVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+
+    // Dependencies for local unit tests
+    testCompile junitJupiter()
+    testCompile "org.assertj:assertj-core:$assertjVersion"
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
+
+    // Espresso UI Testing
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.0.9'
-    compile 'io.reactivex.rxjava2:rxkotlin:2.0.2'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-
-    testCompile("org.junit.jupiter:junit-jupiter-api:5.0.0-M4")
-    testCompile "org.mockito:mockito-core:2.+"
 }
