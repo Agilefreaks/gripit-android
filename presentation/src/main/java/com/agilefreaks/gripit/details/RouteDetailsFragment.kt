@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.agilefreaks.gripit.R
+import com.agilefreaks.gripit.routes.list.ListAdapter
+import com.agilefreaks.gripit.routes.list.ListContract
+import com.agilefreaks.gripit.view.BaseView
 
-class RouteDetailsFragment : Fragment() {
+class RouteDetailsFragment constructor(override val viewModel: RouteDetailsContract.ViewModel) : BaseView(), RouteDetailsContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,14 +22,12 @@ class RouteDetailsFragment : Fragment() {
     }
 
     companion object {
-        private val PARAM_ROUTE_ID = "param_route_id"
+        val PARAM_ROUTE_ID = "param_route_id"
 
-        fun forRoute(routeId: Int): RouteDetailsFragment {
-            val fragment = RouteDetailsFragment()
+        fun forRoute(routeId: Int): Bundle {
             val args = Bundle()
-            args.putInt(PARAM_ROUTE_ID, routeId)
-            fragment.arguments = args
-            return fragment
+            args.putInt(RouteDetailsFragment.PARAM_ROUTE_ID, routeId)
+            return args
         }
     }
 }

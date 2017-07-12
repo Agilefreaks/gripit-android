@@ -11,6 +11,7 @@ import javax.inject.Inject
 
 class RouteDetailsActivity : AppCompatActivity() {
     @Inject lateinit var navigator: Navigator
+    @Inject lateinit var routeDetailsFragment: RouteDetailsContract.View
 
     companion object {
         val INTENT_EXTRA_PARAM_USER_ID = "com.agilefreaks.INTENT_USER_ID"
@@ -40,9 +41,10 @@ class RouteDetailsActivity : AppCompatActivity() {
 
     fun initializeActivity(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            routeId = intent.getIntExtra(INTENT_EXTRA_PARAM_USER_ID, -1)
-            val fragment = RouteDetailsFragment.forRoute(routeId)
+            val fragment = routeDetailsFragment as RouteDetailsFragment
             val transaction = supportFragmentManager.beginTransaction()
+            routeId = intent.getIntExtra(INTENT_EXTRA_PARAM_USER_ID, -1)
+            fragment.arguments = RouteDetailsFragment.forRoute(routeId)
             transaction.add(R.id.content_frame, fragment)
             transaction.commit()
         } else {

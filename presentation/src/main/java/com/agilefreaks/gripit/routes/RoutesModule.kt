@@ -27,16 +27,16 @@ class RoutesModule {
         return TabsViewModel(getFilterUseCase)
     }
 
+    @Provides @PerActivity fun provideRouteController(listViewModel: ListContract.ViewModel, tabsViewModel: TabsContract.ViewModel): RoutesController {
+        return RoutesController(listViewModel, tabsViewModel)
+    }
+
     @Provides fun providesTabsView(tabsViewModel: TabsContract.ViewModel): TabsContract.View {
         return TabsFragment.build(tabsViewModel)
     }
 
     @Provides fun providesListView(listViewModel: ListContract.ViewModel, listAdapter: ListAdapter): ListContract.View {
         return ListFragment(listViewModel, listAdapter)
-    }
-
-    @Provides fun provideRouteController(listViewModel: ListContract.ViewModel, tabsViewModel: TabsContract.ViewModel): RoutesController {
-        return RoutesController(listViewModel, tabsViewModel)
     }
 
     @Provides fun provideRouteRepository(routeDataRepository: RouteDataRepository): RouteRepository {
