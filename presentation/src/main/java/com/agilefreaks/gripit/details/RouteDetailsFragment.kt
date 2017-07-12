@@ -21,6 +21,18 @@ class RouteDetailsFragment constructor(override val viewModel: RouteDetailsContr
         return inflater.inflate(R.layout.route_details_fragment, container, false)
     }
 
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (savedInstanceState == null) {
+            loadRouteDetails()
+        }
+    }
+
+    private fun loadRouteDetails() {
+        val arguments = arguments
+        viewModel.setRouteId(arguments.getInt(PARAM_ROUTE_ID))
+    }
+
     companion object {
         val PARAM_ROUTE_ID = "param_route_id"
 
