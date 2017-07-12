@@ -5,7 +5,6 @@ import android.content.Intent
 import com.agilefreaks.gripit.details.RouteDetailsActivity
 import com.agilefreaks.gripit.routes.RoutesActivity
 import javax.inject.Inject
-import javax.inject.Singleton
 
 
 class Navigator @Inject constructor(val applicationContext: Context) {
@@ -16,9 +15,9 @@ class Navigator @Inject constructor(val applicationContext: Context) {
 
     }
 
-    fun navigateToRouteDetails(userId: Int) {
+    fun navigateToRouteDetails(routeId: Int) {
         val intentToLaunch = Intent(applicationContext, RouteDetailsActivity::class.java)
-        intentToLaunch.putExtra(RouteDetailsActivity.INTENT_EXTRA_PARAM_USER_ID, userId)
+        intentToLaunch.putExtra(RouteDetailsActivity.INTENT_EXTRA_PARAM_USER_ID, routeId)
         applicationContext.startActivity(intentToLaunch)
     }
 }
