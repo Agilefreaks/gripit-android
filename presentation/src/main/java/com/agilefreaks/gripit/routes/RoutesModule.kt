@@ -1,6 +1,7 @@
 package com.agilefreaks.gripit.routes
 
 import com.agilefreaks.gripit.core.di.PerActivity
+import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.data.repository.RouteDataRepository
 import com.agilefreaks.gripit.data.repository.RouteFilterDataRepository
 import com.agilefreaks.gripit.domain.interactor.GetFilterUseCase
@@ -27,8 +28,8 @@ class RoutesModule {
         return TabsViewModel(getFilterUseCase)
     }
 
-    @Provides @PerActivity fun provideRouteController(listViewModel: ListContract.ViewModel, tabsViewModel: TabsContract.ViewModel): RoutesController {
-        return RoutesController(listViewModel, tabsViewModel)
+    @Provides @PerActivity fun provideRouteController(listViewModel: ListContract.ViewModel, tabsViewModel: TabsContract.ViewModel, navigator: Navigator): RoutesController {
+        return RoutesController(listViewModel, tabsViewModel, navigator)
     }
 
     @Provides fun providesTabsView(tabsViewModel: TabsContract.ViewModel): TabsContract.View {

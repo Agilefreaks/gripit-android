@@ -10,13 +10,14 @@ import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.domain.Route
+import com.agilefreaks.gripit.routes.RoutesController
 import com.agilefreaks.gripit.routes.list.model.RouteModel
 import javax.inject.Inject
 
 
 class ListAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val routes: MutableList<Route> = mutableListOf()
-    @Inject lateinit var navigator: Navigator
+    @Inject lateinit var controller: RoutesController
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding: ViewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.route_view, parent, false)
@@ -27,7 +28,7 @@ class ListAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.View
         val viewDataBinding: ViewDataBinding = (holder as RouteViewHolder).viewDataBinding
         viewDataBinding.setVariable(BR.route, RouteModel(routes[position]))
         viewDataBinding.root.setOnClickListener({
-            navigator.navigateToRouteDetails(routes[position].id)
+            controller.navigate(routes[position])
         })
     }
 
