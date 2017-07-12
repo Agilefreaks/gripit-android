@@ -4,9 +4,11 @@ import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
+import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.domain.Route
 import com.agilefreaks.gripit.routes.list.model.RouteModel
 import javax.inject.Inject
@@ -14,6 +16,7 @@ import javax.inject.Inject
 
 class ListAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val routes: MutableList<Route> = mutableListOf()
+    @Inject lateinit var navigator: Navigator
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding: ViewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.route_view, parent, false)
@@ -23,6 +26,9 @@ class ListAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.View
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         val viewDataBinding: ViewDataBinding = (holder as RouteViewHolder).viewDataBinding
         viewDataBinding.setVariable(BR.route, RouteModel(routes[position]))
+        viewDataBinding.root.setOnClickListener({
+            navigator.navigateToRouteDetails(routes[position].id)
+        })
     }
 
     override fun getItemCount(): Int {

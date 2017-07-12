@@ -3,6 +3,7 @@ package com.agilefreaks.gripit.core.modules
 import android.content.Context
 import android.content.res.AssetManager
 import com.agilefreaks.gripit.AndroidApplication
+import com.agilefreaks.gripit.core.navigation.Navigator
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
@@ -20,6 +21,10 @@ class ApplicationModule(private val application: AndroidApplication) {
 
     @Provides @Singleton internal fun providesAssetManager(context: Context): AssetManager {
         return context.assets
+    }
+
+    @Provides @Singleton internal fun provideNavigator(applicationContext: Context) : Navigator{
+        return Navigator(applicationContext)
     }
 
     @Provides @Named("executionScheduler") internal fun provideExecutionScheduler(): Scheduler = Schedulers.io()
