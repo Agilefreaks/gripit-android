@@ -1,6 +1,7 @@
 package com.agilefreaks.gripit.details
 
 import com.agilefreaks.gripit.core.di.PerActivity
+import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.data.repository.RouteDataRepository
 import com.agilefreaks.gripit.domain.interactor.GetRoutesUseCase
 import com.agilefreaks.gripit.domain.repository.RouteRepository
@@ -17,7 +18,7 @@ class RouteDetailsModule {
         return RouteDetailsViewModel()
     }
 
-    @Provides fun provideRouteDetailsFragment(routeDetailsViewModel: RouteDetailsViewModel): RouteDetailsContract.View {
-        return RouteDetailsFragment(routeDetailsViewModel)
+    @Provides fun provideRouteDetailsFragment(routeDetailsViewModel: RouteDetailsViewModel, navigator: Navigator): RouteDetailsContract.View {
+        return RouteDetailsFragment(routeDetailsViewModel, navigator)
     }
 }

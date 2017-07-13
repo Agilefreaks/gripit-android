@@ -11,4 +11,6 @@ import dagger.Component
 @Component(dependencies = arrayOf(ApplicationComponent::class), modules = arrayOf(RouteDetailsModule::class, DataSourceModule::class))
 interface RouteDetailsComponent {
     fun inject(routeDetailsActivity: RouteDetailsActivity)
+
+    fun navigator(): Navigator
 }

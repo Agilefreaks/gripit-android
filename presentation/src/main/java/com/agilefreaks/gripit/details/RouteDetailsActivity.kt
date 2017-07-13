@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.activity_route_details.*
 import javax.inject.Inject
 
 class RouteDetailsActivity : AppCompatActivity() {
-    @Inject lateinit var navigator: Navigator
     @Inject lateinit var routeDetailsFragment: RouteDetailsContract.View
 
     companion object {
@@ -24,14 +23,7 @@ class RouteDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_route_details)
         setupDagger()
-        setHomeNavigation()
         initializeActivity(savedInstanceState)
-    }
-
-    fun setHomeNavigation() {
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        toolbar.setNavigationOnClickListener { navigator.navigateToRouteList() }
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
