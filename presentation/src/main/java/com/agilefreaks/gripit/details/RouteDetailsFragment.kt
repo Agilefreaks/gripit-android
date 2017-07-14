@@ -6,17 +6,24 @@ import android.support.v7.graphics.Palette
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.agilefreaks.gripit.AndroidApplication
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.navigation.Navigator
+import com.agilefreaks.gripit.details.picture.RoutePictureFragment
 import com.agilefreaks.gripit.view.BaseView
 import kotlinx.android.synthetic.main.route_details_fragment.*
 import javax.inject.Inject
 
-class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDetailsContract.ViewModel, var navigator: Navigator) : BaseView(), RouteDetailsContract.View {
 
+class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDetailsContract.ViewModel, var navigator: Navigator) : BaseView(), RouteDetailsContract.View {
+    @Inject lateinit var routePictureFragment: RoutePictureFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        DaggerRouteDetailsComponent.builder().
+                applicationComponent((activity.application as AndroidApplication).applicationComponent).
+                build().
+                inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +36,14 @@ class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDeta
         setCollapsibleBar()
         if (savedInstanceState == null) {
             loadRouteDetails()
+        }
+
+        route_picture_header.setOnClickListener {
+            routePictureFragment.arguments = RoutePictureFragment.forPicture("placeholder.jpg")
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, routePictureFragment)
+                    .addToBackStack(null)
+                    .commit()
         }
     }
 

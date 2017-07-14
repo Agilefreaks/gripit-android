@@ -4,11 +4,9 @@ import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
-import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.domain.Route
 import com.agilefreaks.gripit.routes.RoutesController
 import com.agilefreaks.gripit.routes.list.model.RouteModel

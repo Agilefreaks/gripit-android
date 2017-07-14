@@ -52,6 +52,11 @@ android {
     }
 }
 
+
+kapt {
+    generateStubs = true
+}
+
 dependencies {
     // App's dependencies
     compile project(':domain')
@@ -76,8 +81,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
     compile "com.squareup.picasso:picasso:$picassoVersion"
     compile "com.android.support.test.espresso:espresso-idling-resource:$espressoVersion"
-    compile "com.android.support.constraint:constraint-layout:$constraintVersion"
     compile "com.google.android:flexbox:$flexBoxVersion"
+    compile "com.github.chrisbanes:PhotoView:$photoViewVersion"
 
     // Dependencies for local unit tests
     testCompile "junit:junit:$junitVersion"
@@ -97,6 +102,4 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude module: 'recyclerview-v7'
     }
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-v4:25.3.1'
 }

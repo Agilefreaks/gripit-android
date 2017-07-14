@@ -23,7 +23,7 @@ class ApplicationModule(private val application: AndroidApplication) {
         return context.assets
     }
 
-    @Provides @Singleton internal fun provideNavigator(applicationContext: Context) : Navigator{
+    @Provides @Singleton internal fun provideNavigator(applicationContext: Context): Navigator {
         return Navigator(applicationContext)
     }
 

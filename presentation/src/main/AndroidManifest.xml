@@ -20,7 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".details.RouteDetailsActivity" android:theme="@style/AppTheme.Detail">
+        <activity
+            android:name=".details.RouteDetailsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme.Detail">
         </activity>
     </application>
 

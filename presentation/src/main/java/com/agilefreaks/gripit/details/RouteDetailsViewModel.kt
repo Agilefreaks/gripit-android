@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 
 class RouteDetailsViewModel @Inject constructor() : BaseObservable(), RouteDetailsContract.ViewModel {
-    lateinit var viewCallback : RouteDetailsContract.View
+    lateinit var viewCallback: RouteDetailsContract.View
     override fun onViewResume() {
     }
 

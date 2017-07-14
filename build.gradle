@@ -25,6 +25,7 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -42,9 +43,9 @@ ext {
 
     // Sdk and tools
     minSdkVersion = 21
-    targetSdkVersion = 25
-    compileSdkVersion = 25
-    buildToolsVersion = '25.0.2'
+    targetSdkVersion = 26
+    compileSdkVersion = 26
+    buildToolsVersion = '26.0.0'
 
     // Libraries
     supportLibraryVersion = '25.3.1'
@@ -56,9 +57,9 @@ ext {
     javaxVersion = '10.0-b28'
     picassoVersion = '2.5.2'
     gsonVersion = '2.8.1'
-    constraintVersion = '1.0.2'
     databindingVersion = '2.3.3'
     flexBoxVersion = '0.3.0'
+    photoViewVersion = "2.1.2"
 
     // Testing
     junitVersion = '4.12'

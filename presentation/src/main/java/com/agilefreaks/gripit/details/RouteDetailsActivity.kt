@@ -4,9 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.agilefreaks.gripit.AndroidApplication
 import com.agilefreaks.gripit.R
-import com.agilefreaks.gripit.core.navigation.Navigator
-import com.agilefreaks.gripit.routes.DaggerRoutesComponent
-import kotlinx.android.synthetic.main.activity_route_details.*
 import javax.inject.Inject
 
 class RouteDetailsActivity : AppCompatActivity() {

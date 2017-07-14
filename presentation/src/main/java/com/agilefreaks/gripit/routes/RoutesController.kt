@@ -7,7 +7,6 @@ import com.agilefreaks.gripit.routes.list.ListContract
 import com.agilefreaks.gripit.routes.tabs.TabsContract
 import io.reactivex.observers.DisposableObserver
 import javax.inject.Inject
-import javax.inject.Named
 
 class RoutesController @Inject constructor(val listViewModel: ListContract.ViewModel, val tabsViewModel: TabsContract.ViewModel, val navigator: Navigator) {
     @Inject lateinit var context: Context
@@ -21,5 +20,6 @@ class RoutesController @Inject constructor(val listViewModel: ListContract.ViewM
 
     fun navigate(route: Route) {
         navigator.navigateToRouteDetails(route.id)
+
     }
 }
