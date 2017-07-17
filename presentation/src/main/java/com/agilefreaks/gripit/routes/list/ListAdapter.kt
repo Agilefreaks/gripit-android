@@ -9,7 +9,7 @@ import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.domain.Route
 import com.agilefreaks.gripit.routes.RoutesController
-import com.agilefreaks.gripit.routes.list.model.RouteModel
+import com.agilefreaks.gripit.core.model.RouteModel
 import javax.inject.Inject
 
 

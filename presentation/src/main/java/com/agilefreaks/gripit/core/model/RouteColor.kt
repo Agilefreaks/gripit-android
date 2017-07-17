@@ -1,4 +1,4 @@
-package com.agilefreaks.gripit.routes.list.model
+package com.agilefreaks.gripit.core.model
 
 enum class RouteColor(val value: Char) {
     Green('5'),

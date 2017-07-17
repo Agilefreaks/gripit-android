@@ -6,9 +6,7 @@ import com.agilefreaks.gripit.details.picture.RoutePictureFragment
 class RouteDetailsContract {
     interface View : Lifecycle.View {
         fun getRouteId(): Int
-        fun setPictureNavigation(fragment: RoutePictureFragment)
     }
 
-    interface ViewModel : Lifecycle.ViewModel {
-    }
+    interface ViewModel : Lifecycle.ViewModel
 }

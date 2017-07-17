@@ -1,4 +1,4 @@
-package com.agilefreaks.gripit.routes.list.model
+package com.agilefreaks.gripit.core.model
 
 import android.content.Context
 import android.databinding.BindingAdapter
@@ -28,7 +28,7 @@ class RouteModel constructor(route: com.agilefreaks.gripit.domain.Route) {
             }
         }
 
-        @JvmStatic @BindingAdapter("bind:items") fun loadTypes(viewGroup: ViewGroup, entries: List<String>?) {
+        @JvmStatic @BindingAdapter("bind:types") fun loadTypes(viewGroup: ViewGroup, entries: List<String>?) {
             viewGroup.removeAllViews()
             if (entries != null) {
                 val inflater = viewGroup.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

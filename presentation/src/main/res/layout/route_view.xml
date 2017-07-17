@@ -7,7 +7,7 @@
 
         <variable
             name="route"
-            type="com.agilefreaks.gripit.routes.list.model.RouteModel"/>
+            type="com.agilefreaks.gripit.core.model.RouteModel"/>
     </data>
 
     <android.support.v7.widget.CardView
@@ -85,7 +85,7 @@
                 android:layout_marginStart="@dimen/margin_small"
                 android:orientation="vertical"
                 app:flexWrap="wrap"
-                app:items="@{route.type}"
+                app:types="@{route.type}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/route_image"
                 app:layout_constraintRight_toRightOf="parent"

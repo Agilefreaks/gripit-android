@@ -1,15 +1,15 @@
 package com.agilefreaks.gripit.details
 
-import android.graphics.BitmapFactory
+import android.databinding.DataBindingUtil
+import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.v7.graphics.Palette
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.agilefreaks.gripit.AndroidApplication
+import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.navigation.Navigator
-import com.agilefreaks.gripit.details.picture.RoutePictureFragment
 import com.agilefreaks.gripit.view.BaseView
 import kotlinx.android.synthetic.main.route_details_fragment.*
 import javax.inject.Inject
@@ -28,7 +28,9 @@ class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDeta
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.route_details_fragment, container, false)
+        val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.route_details_fragment, container, false)
+        binding.setVariable(BR.viewModel, viewModel)
+        return binding.root
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
@@ -36,29 +38,11 @@ class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDeta
         setCollapsibleBar()
     }
 
-    override fun setPictureNavigation(fragment: RoutePictureFragment) {
-        route_picture_header.setOnClickListener {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, fragment)
-                    .addToBackStack(null)
-                    .commit()
-        }
-    }
-
     fun setCollapsibleBar() {
         val activity = activity as RouteDetailsActivity
         activity.setSupportActionBar(route_toolbar)
         activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         route_toolbar.setNavigationOnClickListener { navigator.navigateToRouteList() }
-
-        val bitmap = BitmapFactory.decodeResource(resources,
-                R.drawable.placeholder_header)
-
-        Palette.from(bitmap).generate { palette ->
-            val vibrantColor = palette.getVibrantColor(R.color.colorPrimary)
-            collapsing_toolbar.setContentScrimColor(vibrantColor)
-            collapsing_toolbar.setStatusBarScrimColor(R.color.black_trans80)
-        }
     }
 
     override fun getRouteId(): Int {
