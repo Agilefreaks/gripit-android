@@ -27,4 +27,15 @@ class DiskRouteDataStoreTest {
         assertThat(entities[0].imageLocation, `is`(expectedEntity.imageLocation))
         assertThat(entities[0].type, `is`(expectedEntity.type))
     }
+
+    @Test
+    fun routeEntitiesReturnsAnObservableRoute() {
+        val expectedEntity = RouteEntity(0, "Route disk 1", "placeholder.jpg", "1", listOf("Great", "Easy"), "June 2018", "Climber")
+
+        diskRouteDataSource.routeEntityDetails(0).test().assertValue { it.id == 0 }
+
+        val entity = diskRouteDataSource.routeEntityDetails(0).test().values()[0]
+        assertThat(entity.imageLocation, `is`(expectedEntity.imageLocation))
+        assertThat(entity.type, `is`(expectedEntity.type))
+    }
 }

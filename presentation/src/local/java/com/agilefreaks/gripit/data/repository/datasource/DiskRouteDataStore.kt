@@ -8,6 +8,7 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 class DiskRouteDataStore @Inject constructor(var serializer: Serializer, var assetManager: AssetManager) : RouteDataStore {
+
     private val DEFAULT_FILE_NAME = "route_list.json"
 
     override fun routeEntities(): Observable<Collection<RouteEntity>> {
@@ -16,6 +17,16 @@ class DiskRouteDataStore @Inject constructor(var serializer: Serializer, var ass
             val routes = serializer.deserialize(routesJson, object : TypeToken<Collection<RouteEntity>>() {})
 
             emitter.onNext(routes)
+            emitter.onComplete()
+        }
+    }
+
+    override fun routeEntityDetails(routeId: Int): Observable<RouteEntity> {
+        return Observable.create { emitter ->
+            val routesJson = assetManager.open(DEFAULT_FILE_NAME).bufferedReader().use { it.readText() }
+            val routes = serializer.deserialize(routesJson, object : TypeToken<Collection<RouteEntity>>() {})
+
+            emitter.onNext(routes.first { it.id == routeId })
             emitter.onComplete()
         }
     }
