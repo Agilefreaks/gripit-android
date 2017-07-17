@@ -6,6 +6,7 @@ import android.databinding.ObservableField
 import android.support.design.widget.TabLayout
 import com.agilefreaks.gripit.domain.None
 import com.agilefreaks.gripit.domain.RouteFilter
+import com.agilefreaks.gripit.domain.interactor.DefaultObserver
 import com.agilefreaks.gripit.domain.interactor.GetFilter
 import com.agilefreaks.gripit.routes.RoutesController
 import io.reactivex.observers.DisposableObserver

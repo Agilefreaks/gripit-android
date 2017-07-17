@@ -4,8 +4,8 @@ import android.databinding.BaseObservable
 import com.agilefreaks.gripit.core.Lifecycle
 import com.agilefreaks.gripit.domain.Route
 import com.agilefreaks.gripit.domain.Types
+import com.agilefreaks.gripit.domain.interactor.DefaultObserver
 import com.agilefreaks.gripit.domain.interactor.GetRoutes
-import io.reactivex.observers.DisposableObserver
 import javax.inject.Inject
 
 class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable(), ListContract.ViewModel {
@@ -29,16 +29,9 @@ class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable
         useCase.execute(RoutesObserver(), filter)
     }
 
-    inner class RoutesObserver : DisposableObserver<Collection<Route>>() {
-        override fun onComplete() {
-            // ignore
-        }
-
-        override fun onError(e: Throwable?) {
-        }
-
-        override fun onNext(routes: Collection<Route>) {
-            viewCallback.showRoutes(routes)
+    inner class RoutesObserver : DefaultObserver<Collection<Route>>() {
+        override fun onNext(item: Collection<Route>) {
+            viewCallback.showRoutes(item)
         }
     }
 }

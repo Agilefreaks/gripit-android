@@ -4,8 +4,8 @@ import android.databinding.BaseObservable
 import com.agilefreaks.gripit.core.Lifecycle
 import com.agilefreaks.gripit.details.picture.RoutePictureFragment
 import com.agilefreaks.gripit.domain.Route
+import com.agilefreaks.gripit.domain.interactor.DefaultObserver
 import com.agilefreaks.gripit.domain.interactor.GetRouteDetails
-import io.reactivex.observers.DisposableObserver
 import javax.inject.Inject
 
 
@@ -28,16 +28,9 @@ class RouteDetailsViewModel @Inject constructor(val useCase: GetRouteDetails) : 
     override fun onViewPaused() {
     }
 
-    inner class RouteDetailsObserver : DisposableObserver<Route>() {
-        override fun onComplete() {
-            // ignore
-        }
-
-        override fun onError(e: Throwable?) {
-        }
-
-        override fun onNext(newRoute: Route) {
-            route = newRoute
+    inner class RouteDetailsObserver : DefaultObserver<Route>() {
+        override fun onNext(item: Route) {
+            route = item
             routePictureFragment.arguments = RoutePictureFragment.forPicture(route.imageLocation)
             viewCallback.setPictureNavigation(routePictureFragment)
         }
