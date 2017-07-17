@@ -15,4 +15,12 @@ class MockRouteDataStore : RouteDataStore {
                 RouteEntity(2, "Route 2", "placeholder.jpg", "6A", listOf("Medium"), time, "Mock Climber"),
                 RouteEntity(3, "Route 3", "placeholder.jpg", "6A", listOf("Hard"), time, "Mock Climber")))
     }
+
+    override fun routeEntityDetails(routeId: Int): Observable<RouteEntity> {
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat.getDateInstance()
+        val time = dateFormat.format(calendar.time)
+        return Observable.just(RouteEntity(1, "Route 1", "placeholder.jpg", "6A", listOf("Easy"), time, "Mock Climber"))
+    }
+
 }

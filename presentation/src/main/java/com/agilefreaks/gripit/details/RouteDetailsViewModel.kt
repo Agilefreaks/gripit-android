@@ -24,7 +24,6 @@ class RouteDetailsViewModel @Inject constructor(val useCase: GetRouteDetails) : 
         this.viewCallback = viewCallback as RouteDetailsContract.View
         route = RouteModel(Route())
         useCase.execute(RouteDetailsObserver(), viewCallback.getRouteId())
-
     }
 
     override fun onViewDetached() {
