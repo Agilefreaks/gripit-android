@@ -6,14 +6,16 @@ import android.databinding.ObservableField
 import android.support.design.widget.TabLayout
 import com.agilefreaks.gripit.domain.None
 import com.agilefreaks.gripit.domain.RouteFilter
-import com.agilefreaks.gripit.domain.interactor.GetFilterUseCase
+import com.agilefreaks.gripit.domain.interactor.GetFilter
+import com.agilefreaks.gripit.routes.RoutesController
+import io.reactivex.observers.DisposableObserver
 import io.reactivex.Observable
 import io.reactivex.functions.Consumer
 import io.reactivex.processors.BehaviorProcessor
 import javax.inject.Inject
 
 
-class TabsViewModel @Inject constructor(val useCase: GetFilterUseCase) : BaseObservable(), TabsContract.ViewModel {
+class TabsViewModel @Inject constructor(val useCase: GetFilter) : BaseObservable(), TabsContract.ViewModel {
     override val tabSelected: BehaviorProcessor<String> = BehaviorProcessor.create<String>()
     override val routeFilters = ObservableField<Collection<RouteFilter>>(emptyList())
 

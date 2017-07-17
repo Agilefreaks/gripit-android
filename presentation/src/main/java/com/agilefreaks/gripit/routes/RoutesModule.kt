@@ -4,8 +4,8 @@ import com.agilefreaks.gripit.core.di.PerActivity
 import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.data.repository.RouteDataRepository
 import com.agilefreaks.gripit.data.repository.RouteFilterDataRepository
-import com.agilefreaks.gripit.domain.interactor.GetFilterUseCase
-import com.agilefreaks.gripit.domain.interactor.GetRoutesUseCase
+import com.agilefreaks.gripit.domain.interactor.GetFilter
+import com.agilefreaks.gripit.domain.interactor.GetRoutes
 import com.agilefreaks.gripit.domain.repository.RouteFilterRepository
 import com.agilefreaks.gripit.domain.repository.RouteRepository
 import com.agilefreaks.gripit.routes.list.ListAdapter
@@ -20,12 +20,12 @@ import dagger.Provides
 
 @Module
 class RoutesModule {
-    @Provides @PerActivity fun provideListViewModel(getRoutesUseCase: GetRoutesUseCase): ListContract.ViewModel {
+    @Provides @PerActivity fun provideListViewModel(getRoutesUseCase: GetRoutes): ListContract.ViewModel {
         return ListViewModel(getRoutesUseCase)
     }
 
-    @Provides @PerActivity fun provideTabsViewModel(getFilterUseCase: GetFilterUseCase): TabsContract.ViewModel {
-        return TabsViewModel(getFilterUseCase)
+    @Provides @PerActivity fun provideTabsViewModel(getFilter: GetFilter): TabsContract.ViewModel {
+        return TabsViewModel(getFilter)
     }
 
     @Provides @PerActivity fun provideRouteController(listViewModel: ListContract.ViewModel, tabsViewModel: TabsContract.ViewModel, navigator: Navigator): RoutesController {

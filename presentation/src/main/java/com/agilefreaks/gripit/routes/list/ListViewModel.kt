@@ -4,11 +4,11 @@ import android.databinding.BaseObservable
 import com.agilefreaks.gripit.core.Lifecycle
 import com.agilefreaks.gripit.domain.Route
 import com.agilefreaks.gripit.domain.Types
-import com.agilefreaks.gripit.domain.interactor.GetRoutesUseCase
+import com.agilefreaks.gripit.domain.interactor.GetRoutes
 import io.reactivex.observers.DisposableObserver
 import javax.inject.Inject
 
-class ListViewModel @Inject constructor(val useCase: GetRoutesUseCase) : BaseObservable(), ListContract.ViewModel {
+class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable(), ListContract.ViewModel {
     lateinit var viewCallback: ListContract.View
 
     override fun onViewAttached(viewCallback: Lifecycle.View) {

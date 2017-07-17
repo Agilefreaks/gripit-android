@@ -15,8 +15,8 @@ import kotlinx.android.synthetic.main.route_details_fragment.*
 import javax.inject.Inject
 
 
-class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDetailsContract.ViewModel, var navigator: Navigator) : BaseView(), RouteDetailsContract.View {
-    @Inject lateinit var routePictureFragment: RoutePictureFragment
+class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDetailsContract.ViewModel) : BaseView(), RouteDetailsContract.View {
+    @Inject lateinit var navigator: Navigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,14 +34,12 @@ class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDeta
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCollapsibleBar()
-        if (savedInstanceState == null) {
-            loadRouteDetails()
-        }
+    }
 
+    override fun setPictureNavigation(fragment: RoutePictureFragment) {
         route_picture_header.setOnClickListener {
-            routePictureFragment.arguments = RoutePictureFragment.forPicture("placeholder.jpg")
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, routePictureFragment)
+                    .replace(R.id.content_frame, fragment)
                     .addToBackStack(null)
                     .commit()
         }
@@ -63,9 +61,9 @@ class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDeta
         }
     }
 
-    private fun loadRouteDetails() {
+    override fun getRouteId(): Int {
         val arguments = arguments
-        viewModel.setRouteId(arguments.getInt(PARAM_ROUTE_ID))
+        return arguments.getInt(PARAM_ROUTE_ID)
     }
 
     companion object {
