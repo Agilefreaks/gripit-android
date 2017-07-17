@@ -5,4 +5,6 @@ import io.reactivex.Observable
 
 interface RouteDataStore {
     fun routeEntities(): Observable<Collection<RouteEntity>>
+
+    fun routeEntityDetails(routeId: Int): Observable<RouteEntity>
 }

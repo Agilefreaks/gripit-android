@@ -8,8 +8,8 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 
-class GetRoutesUseCaseTest {
-    lateinit var getRoutes: GetRoutesUseCase
+class GetRoutesTest {
+    lateinit var getRoutes: GetRoutes
 
     @Mock lateinit var mockExecutionScheduler: Scheduler
     @Mock lateinit var mockPostExecutionScheduler: Scheduler
@@ -18,7 +18,7 @@ class GetRoutesUseCaseTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        getRoutes = GetRoutesUseCase(mockRouteRepository, mockExecutionScheduler, mockPostExecutionScheduler)
+        getRoutes = GetRoutes(mockRouteRepository, mockExecutionScheduler, mockPostExecutionScheduler)
     }
 
     @Test

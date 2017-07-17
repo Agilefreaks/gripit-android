@@ -12,6 +12,7 @@ import javax.inject.Inject
 
 class RouteDataRepository
 @Inject constructor(val dataStore: RouteDataStore, val mapper: RouteEntityDataMapper) : RouteRepository {
+
     override fun routes(params: Any?): Observable<Collection<Route>> {
         val filter = params as String
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -19,5 +20,9 @@ class RouteDataRepository
             mapper.transform(it).sortedByDescending { route -> dateFormat.parse(route.addDate) }
         }
         return if (filter == Types.NoFilter.toString()) routes else routes.map { it.filter { it.type.contains(filter) } }
+    }
+
+    override fun route(routeId: Int): Observable<Route> {
+        return dataStore.routeEntityDetails(routeId).map { mapper.transform(it) }
     }
 }

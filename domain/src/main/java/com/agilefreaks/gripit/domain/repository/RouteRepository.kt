@@ -5,4 +5,6 @@ import io.reactivex.Observable
 
 interface RouteRepository {
     fun routes(params: Any?): Observable<Collection<Route>>
+
+    fun route(routeId: Int) : Observable<Route>
 }

@@ -7,13 +7,13 @@ import io.reactivex.Scheduler
 import javax.inject.Inject
 import javax.inject.Named
 
-class GetRoutesUseCase
+class GetRouteDetails
 @Inject constructor(val repository: RouteRepository,
                     @Named("executionScheduler") executionScheduler: Scheduler,
                     @Named("postExecutionScheduler") postExecutionScheduler: Scheduler) :
-        UseCase<Collection<Route>, Any>(executionScheduler, postExecutionScheduler) {
+        UseCase<Route, Any>(executionScheduler, postExecutionScheduler) {
 
-    override fun buildUseCaseObservable(params: Any?): Observable<Collection<Route>> {
-        return repository.routes(params)
+    override fun buildUseCaseObservable(params: Any?): Observable<Route> {
+        return repository.route(params as Int)
     }
 }

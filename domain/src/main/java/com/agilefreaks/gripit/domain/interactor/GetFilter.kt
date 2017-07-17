@@ -7,7 +7,7 @@ import io.reactivex.Scheduler
 import javax.inject.Inject
 import javax.inject.Named
 
-class GetFilterUseCase
+class GetFilter
 @Inject constructor(val repository: RouteFilterRepository,
                     @Named("executionScheduler") executionScheduler: Scheduler,
                     @Named("postExecutionScheduler") postExecutionScheduler: Scheduler) :
