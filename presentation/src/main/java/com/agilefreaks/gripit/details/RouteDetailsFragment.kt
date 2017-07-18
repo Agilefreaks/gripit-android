@@ -11,7 +11,7 @@ import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.view.BaseView
-import kotlinx.android.synthetic.main.route_details_fragment.*
+import kotlinx.android.synthetic.main.fragment_route_details.*
 import javax.inject.Inject
 
 
@@ -28,7 +28,7 @@ class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDeta
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.route_details_fragment, container, false)
+        val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.fragment_route_details, container, false)
         binding.setVariable(BR.viewModel, viewModel)
         return binding.root
     }

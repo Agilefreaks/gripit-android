@@ -18,7 +18,7 @@ class RouteDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.route_details_activity)
+        setContentView(R.layout.activity_route_details)
         setupDagger()
         initializeActivity(savedInstanceState)
     }
