@@ -9,8 +9,8 @@
     tools:ignore="UnusedResources">
 
     <com.github.chrisbanes.photoview.PhotoView
-        style="@style/AppTheme.PictureScreen"
         android:id="@+id/route_detail_picture"
+        style="@style/AppTheme.PictureScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"

@@ -12,9 +12,9 @@
     <TextView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/route_type"
+        style="@style/Widget.Gripit.Item.Type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.Gripit.Item.Type"
         android:text="@{type}"
         android:textAlignment="center"
         android:textColor="@color/white"/>

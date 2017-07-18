@@ -54,6 +54,7 @@
                 style="@style/Widget.Gripit.Item.Grade"
                 android:layout_width="@dimen/route_grade_dimen"
                 android:layout_height="@dimen/route_grade_dimen"
+                android:layout_marginBottom="@dimen/margin_small"
                 android:layout_marginEnd="@dimen/margin_small"
                 android:layout_marginLeft="@dimen/margin_medium"
                 android:layout_marginRight="@dimen/margin_medium"
@@ -63,16 +64,15 @@
                 android:gravity="center"
                 android:textSize="@dimen/text_medium"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/route_types"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toRightOf="@+id/route_image"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/route_name"
+                app:layout_constraintVertical_bias="0.5"
                 app:layout_constraintVertical_chainStyle="packed"
                 support:color="@{route.grade}"
-                support:text="@{route.grade}"
-                android:layout_marginBottom="@dimen/margin_small"
-                app:layout_constraintBottom_toTopOf="@+id/route_types"
-                app:layout_constraintVertical_bias="0.5"/>
+                support:text="@{route.grade}"/>
 
             <com.google.android.flexbox.FlexboxLayout
                 android:id="@+id/route_types"
@@ -85,10 +85,10 @@
                 android:layout_marginStart="@dimen/margin_small"
                 android:orientation="vertical"
                 app:flexWrap="wrap"
-                app:types="@{route.type}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/route_image"
                 app:layout_constraintRight_toRightOf="parent"
+                app:types="@{route.type}"
                 />
 
         </android.support.constraint.ConstraintLayout>
