@@ -20,7 +20,7 @@ class RoutesActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupDagger()
-        setContentView(R.layout.activity_routes)
+        setContentView(R.layout.routes_activity)
 
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.content_frame, listFragment as Fragment)

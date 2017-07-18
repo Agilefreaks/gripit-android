@@ -15,9 +15,13 @@
             android:name=".routes.RoutesActivity"
             android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN"/>
-
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.LAUNCHER"/>
+                <data android:scheme="http"
+                      android:host="www.agilefreaks.com" />
             </intent-filter>
         </activity>
         <activity

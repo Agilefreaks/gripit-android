@@ -2,8 +2,10 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="UnusedResources">
 
 
     <android.support.design.widget.AppBarLayout
@@ -24,10 +26,10 @@
             app:title="@string/routes_title">
         </android.support.v7.widget.Toolbar>
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                     android:id="@+id/tabs_frame"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content">
+        <FrameLayout
+            android:id="@+id/tabs_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         </FrameLayout>
 
     </android.support.design.widget.AppBarLayout>
@@ -38,10 +40,10 @@
         android:orientation="vertical"
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                     android:id="@+id/content_frame"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content">
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         </FrameLayout>
 
     </LinearLayout>

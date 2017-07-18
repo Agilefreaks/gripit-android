@@ -32,6 +32,7 @@ class RouteDetailsViewModel @Inject constructor(val useCase: GetRouteDetails) : 
     override fun onViewPaused() {
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun onPictureClick(view: View) {
         (viewCallback as RouteDetailsFragment).fragmentManager.beginTransaction()
                 .replace(R.id.content_frame, routePictureFragment)

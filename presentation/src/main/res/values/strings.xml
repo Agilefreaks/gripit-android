@@ -1,12 +1,7 @@
 <resources>
     <string name="app_name">Gripit</string>
     <string name="placeholder">placeholder</string>
-    <string name="first">first</string>
-    <string name="second">second</string>
-    <string name="third">third</string>
-    <string name="fourth">fourth</string>
     <string name="routes_title">Routes</string>
-    <string name="route_details">Route Details</string>
     <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="route_image_description">Route image</string>
 </resources>

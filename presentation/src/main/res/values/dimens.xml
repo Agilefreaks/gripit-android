@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="app_bar_height">56dp</dimen>
-    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_padding" tools:ignore="UnusedResources">16dp</dimen>
     <dimen name="card_margin">8dp</dimen>
 
     <dimen name="margin_tiny">4dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_medium_large">24dp</dimen>
-    <dimen name="margin_large">32dp</dimen>
-    <dimen name="margin_huge">64dp</dimen>
+    <dimen name="margin_large" tools:ignore="UnusedResources">32dp</dimen>
+    <dimen name="margin_huge" tools:ignore="UnusedResources">64dp</dimen>
 
     <dimen name="text_small">12sp</dimen>
     <dimen name="text_medium">14sp</dimen>
@@ -19,7 +19,7 @@
 
     <!-- Semantic definitions -->
 
-    <dimen name="tab_bar_height">48dp</dimen>
+    <dimen name="tab_bar_height" tools:ignore="UnusedResources">48dp</dimen>
     <dimen name="toolbar_padding_end">16dp</dimen>
     <dimen name="toolbar_padding_start">16dp</dimen>
     <dimen name="route_image_dimen">160dp</dimen>
@@ -28,5 +28,5 @@
     <dimen name="tab_padding">12dp</dimen>
     <dimen name="tab_padding_bottom">20dp</dimen>
     <dimen name="appbar_header_height">256dp</dimen>
-    <dimen name="activity_margin_content">24dp</dimen>
+    <dimen name="activity_margin_content" tools:ignore="UnusedResources">24dp</dimen>
 </resources>
