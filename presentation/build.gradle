@@ -52,11 +52,6 @@ android {
     }
 }
 
-
-kapt {
-    generateStubs = true
-}
-
 dependencies {
     // App's dependencies
     compile project(':domain')
