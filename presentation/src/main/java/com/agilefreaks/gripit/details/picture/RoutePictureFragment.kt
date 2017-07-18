@@ -25,7 +25,7 @@ class RoutePictureFragment : Fragment() {
 
     private fun loadRoutePicture() {
         val arguments = arguments
-        Picasso.with(context).load(arguments.getString(PARAM_ROUTE_PICTURE)).
+        Picasso.with(context).load("file:///android_asset/" + arguments.getString(PARAM_ROUTE_PICTURE)).
                 into(route_detail_picture)
     }
 
