@@ -10,10 +10,11 @@ import javax.inject.Inject
 
 class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable(), ListContract.ViewModel {
     lateinit var viewCallback: ListContract.View
+    var cachedFilter: String = Types.NoFilter.toString()
 
     override fun onViewAttached(viewCallback: Lifecycle.View) {
         this.viewCallback = viewCallback as ListContract.View
-        filter(Types.NoFilter.toString())
+        filter(cachedFilter)
     }
 
     override fun onViewDetached() {
@@ -26,6 +27,7 @@ class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable
     }
 
     override fun filter(filter: String) {
+        cachedFilter = filter
         useCase.execute(RoutesObserver(), filter)
     }
 
