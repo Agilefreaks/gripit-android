@@ -11,6 +11,7 @@ class Navigator @Inject constructor(val applicationContext: Context) {
 
     fun navigateToRouteList() {
         val intentToLaunch = Intent(applicationContext, RoutesActivity::class.java)
+        intentToLaunch.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         applicationContext.startActivity(intentToLaunch)
     }
 
