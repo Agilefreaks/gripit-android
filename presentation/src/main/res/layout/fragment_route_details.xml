@@ -31,7 +31,7 @@
                 app:contentScrim="@color/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                 app:statusBarScrim="@color/colorPrimaryDark"
-                app:title="@{viewModel.route.name}">
+                app:titleEnabled="false">
 
                 <ImageView
                     android:id="@+id/route_picture_header"
@@ -46,33 +46,59 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="160dp"
+                    android:layout_height="@dimen/sheet_text_scrim_height_top"
+                    android:background="@drawable/scrim_top"
+                    android:fitsSystemWindows="true"
+                    app:layout_collapseMode="pin"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/sheet_text_scrim_height_bottom"
+                    android:layout_alignBottom="@+id/image"
                     android:layout_gravity="bottom"
-                    android:background="@drawable/scrim"/>
+                    android:background="@drawable/scrim_bottom"/>
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/route_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
+                    android:layout_gravity="top"
+                    android:layout_marginBottom="@dimen/tab_bar_height"
                     android:navigationIcon="@drawable/ic_arrow_back_black_24dp"
                     android:paddingEnd="@dimen/toolbar_padding_start"
                     android:paddingStart="@dimen/toolbar_padding_end"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:title="@{viewModel.route.name}"
                     />
+
+                <android.support.design.widget.TabLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/tabs_route_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tab_bar_height"
+                    android:layout_gravity="bottom"
+                    android:theme="@style/Widget.Design.TabLayout"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:tabIndicatorColor="@color/white"
+                    app:tabIndicatorHeight="@dimen/indicator_height"
+                    app:tabPaddingBottom="@dimen/tab_padding_bottom"
+                    app:tabPaddingEnd="@dimen/tab_padding"
+                    app:tabPaddingStart="@dimen/tab_padding"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextColor="@color/white"/>
+
 
             </android.support.design.widget.CollapsingToolbarLayout>
 
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/anim_toolbar"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        </android.support.v4.widget.NestedScrollView>
-
+        <android.support.v4.view.ViewPager
+            android:id="@+id/details_viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>

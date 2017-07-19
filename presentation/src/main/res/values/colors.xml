@@ -7,6 +7,10 @@
     <color name="green">#43a047</color>
     <color name="red" tools:ignore="UnusedResources">#f44336</color>
     <color name="yellow" tools:ignore="UnusedResources">#FBC02D</color>
-    <color name="transparent" tools:ignore="UnusedResources">#07000000</color>
+    <color name="transparent" tools:ignore="UnusedResources">#32000000</color>
     <color name="black" tools:ignore="UnusedResources">#000000</color>
+    <color name="translucent_scrim_top">#3c000000</color>
+    <color name="translucent_scrim_top_center">#3c000000</color>
+    <color name="translucent_scrim_bottom">#3c000000</color>
+    <color name="translucent_scrim_bottom_center">#3c000000</color>
 </resources>

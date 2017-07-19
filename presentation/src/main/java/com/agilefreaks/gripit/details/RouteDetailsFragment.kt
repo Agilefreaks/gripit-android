@@ -10,6 +10,7 @@ import com.agilefreaks.gripit.AndroidApplication
 import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.navigation.Navigator
+import com.agilefreaks.gripit.details.info.InfoPagerAdapter
 import com.agilefreaks.gripit.view.BaseView
 import kotlinx.android.synthetic.main.fragment_route_details.*
 import javax.inject.Inject
@@ -36,6 +37,14 @@ class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDeta
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCollapsibleBar()
+
+        tabs_route_details.addTab(tabs_route_details.newTab().setText("Info"))
+        tabs_route_details.addTab(tabs_route_details.newTab().setText("Me"))
+        tabs_route_details.addTab(tabs_route_details.newTab().setText("Others"))
+
+        val adapter = InfoPagerAdapter(activity.fragmentManager)
+        details_viewPager.adapter = adapter
+        tabs_route_details.setupWithViewPager(details_viewPager)
     }
 
     fun setCollapsibleBar() {

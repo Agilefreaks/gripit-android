@@ -19,7 +19,7 @@
 
     <!-- Semantic definitions -->
 
-    <dimen name="tab_bar_height" tools:ignore="UnusedResources">48dp</dimen>
+    <dimen name="tab_bar_height">48dp</dimen>
     <dimen name="toolbar_padding_end">16dp</dimen>
     <dimen name="toolbar_padding_start">16dp</dimen>
     <dimen name="route_image_dimen">160dp</dimen>
@@ -29,4 +29,6 @@
     <dimen name="tab_padding_bottom">20dp</dimen>
     <dimen name="appbar_header_height">256dp</dimen>
     <dimen name="activity_margin_content" tools:ignore="UnusedResources">24dp</dimen>
+    <dimen name="sheet_text_scrim_height_top">100dp</dimen>
+    <dimen name="sheet_text_scrim_height_bottom">88dp</dimen>
 </resources>
