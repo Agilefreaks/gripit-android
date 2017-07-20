@@ -19,7 +19,8 @@ class SerializerTest {
                     "    \"grade\": \"A\"," +
                     "    \"type\": [\"Easy\"]," +
                     "    \"add_date\": \"June 2020\"," +
-                    "    \"route_setter\": \"Climber\"" +
+                    "    \"route_setter\": \"Climber\"," +
+                    "    \"notes\": [\"note\"]" +
                     "}," +
                     "{ " +
                     "    \"id\": 2," +
@@ -29,7 +30,7 @@ class SerializerTest {
                     "    \"type\": [\"Easy\"]," +
                     "    \"add_date\": \"June 2022\"," +
                     "    \"route_setter\": \"Climber\"," +
-                    "    \"notes\": \"note\"" +
+                    "    \"notes\": [\"note\"]" +
                     "}" +
                     "]"
 
@@ -60,6 +61,6 @@ class SerializerTest {
         assertThat(routes[0].id, `is`(1))
         assertThat(routes[0].name, `is`("Test Name"))
         assertThat(routes[0].type[0], `is`("Easy"))
-        assertThat(routes[1].notes, `is`("note"))
+        assertThat(routes[1].notes, `is`(listOf("note")))
     }
 }
