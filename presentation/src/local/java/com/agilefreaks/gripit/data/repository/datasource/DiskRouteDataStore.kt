@@ -13,9 +13,7 @@ class DiskRouteDataStore @Inject constructor(var serializer: Serializer, var ass
 
     override fun routeEntities(): Observable<Collection<RouteEntity>> {
         return Observable.create { emitter ->
-            val routesJson = assetManager.open(DEFAULT_FILE_NAME).bufferedReader().use { it.readText() }
-            val routes = serializer.deserialize(routesJson, object : TypeToken<Collection<RouteEntity>>() {})
-
+            val routes = fetchRouteEntities()
             emitter.onNext(routes)
             emitter.onComplete()
         }
@@ -23,11 +21,14 @@ class DiskRouteDataStore @Inject constructor(var serializer: Serializer, var ass
 
     override fun routeEntityDetails(routeId: Int): Observable<RouteEntity> {
         return Observable.create { emitter ->
-            val routesJson = assetManager.open(DEFAULT_FILE_NAME).bufferedReader().use { it.readText() }
-            val routes = serializer.deserialize(routesJson, object : TypeToken<Collection<RouteEntity>>() {})
-
+            val routes = fetchRouteEntities()
             emitter.onNext(routes.first { it.id == routeId })
             emitter.onComplete()
         }
+    }
+
+    fun fetchRouteEntities(): Collection<RouteEntity> {
+        val routesJson = assetManager.open(DEFAULT_FILE_NAME).bufferedReader().use { it.readText() }
+        return serializer.deserialize(routesJson, object : TypeToken<Collection<RouteEntity>>() {})
     }
 }
