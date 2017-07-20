@@ -14,17 +14,10 @@ class DiskRouteDataStore @Inject constructor(var serializer: Serializer, var ass
     override fun routeEntities(): Observable<Collection<RouteEntity>> {
         return Observable.create { emitter ->
             val routesJson = assetManager.open(DEFAULT_FILE_NAME).bufferedReader().use { it.readText() }
-            try {
+            val routes = serializer.deserialize(routesJson, object : TypeToken<Collection<RouteEntity>>() {})
 
-                val routes = serializer.deserialize(routesJson, object : TypeToken<Collection<RouteEntity>>() {})
-
-                emitter.onNext(routes)
-                emitter.onComplete()
-            } catch(ex: Exception) {
-                emitter.onError(ex)
-
-            }
-
+            emitter.onNext(routes)
+            emitter.onComplete()
         }
     }
 
