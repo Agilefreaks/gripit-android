@@ -6,7 +6,8 @@
     "grade": "1",
     "type": ["Great", "Easy"],
     "add_date": "June 2018",
-    "route_setter": "Climber"
+    "route_setter": "Climber",
+    "notes": []
   },
   {
     "id": 1,
@@ -15,7 +16,8 @@
     "grade": "1",
     "type": ["Great2", "Easy2"],
     "add_date": "June 2018",
-    "route_setter": "Climber"
+    "route_setter": "Climber",
+    "notes": []
   },
   {
     "id": 2,
@@ -24,6 +26,7 @@
     "grade": "1",
     "type": ["Great3", "Easy3"],
     "add_date": "June 2018",
-    "route_setter": "Climber"
+    "route_setter": "Climber",
+    "notes": []
   }
 ]

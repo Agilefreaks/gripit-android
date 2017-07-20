@@ -35,5 +35,9 @@ class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable
         override fun onNext(item: Collection<Route>) {
             viewCallback.showRoutes(item)
         }
+
+        override fun onError(exception: Throwable) {
+            throw exception
+        }
     }
 }

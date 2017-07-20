@@ -8,7 +8,7 @@ class RouteEntityDataMapper
 @Inject internal constructor() {
 
     fun transform(routeEntity: RouteEntity): Route {
-        return Route(routeEntity.id, routeEntity.name, routeEntity.imageLocation, routeEntity.grade, routeEntity.type, routeEntity.addDate, routeEntity.routeSetter)
+        return Route(routeEntity.id, routeEntity.name, routeEntity.imageLocation, routeEntity.grade, routeEntity.type, routeEntity.addDate, routeEntity.routeSetter, routeEntity.notes)
     }
 
     fun transform(routeEntityCollection: Collection<RouteEntity>): Collection<Route> {

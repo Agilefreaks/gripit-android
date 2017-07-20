@@ -6,4 +6,9 @@
     <string name="route_image_description">Route image</string>
 
     <string name="blank_fragment">Nothing to see here</string>
+    <string name="grade_label">Grade</string>
+    <string name="type_label">Type</string>
+    <string name="add_date_label">Add Date</string>
+    <string name="route_setter_label">Route Setter</string>
+    <string name="route_setter_comments_label">Route setter comments</string>
 </resources>

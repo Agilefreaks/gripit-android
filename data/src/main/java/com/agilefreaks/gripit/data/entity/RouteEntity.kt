@@ -6,4 +6,5 @@ data class RouteEntity(val id: Int = 0,
                        val grade: String = "",
                        val type: List<String> = listOf(""),
                        val addDate: String = "",
-                       val routeSetter: String = "")
+                       val routeSetter: String = "",
+                       val notes: List<String> = listOf(""))

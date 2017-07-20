@@ -9,7 +9,8 @@
       "Crimpers"
     ],
     "add_date": "05/03/2017",
-    "route_setter": "Adi"
+    "route_setter": "Adi",
+    "notes": []
   },
   {
     "id": 2,
@@ -39,7 +40,7 @@
     "add_date": "01/01/2017",
     "route_setter": "Dani",
     "notes": [
-      "Cu orice la picioare"
+      "Cu orice la picioare."
     ]
   },
   {
@@ -52,7 +53,8 @@
       "Technical"
     ],
     "add_date": "03/03/2017",
-    "route_setter": "Alex"
+    "route_setter": "Alex",
+    "notes": []
   },
   {
     "id": 5,
@@ -64,6 +66,7 @@
       "Slopers"
     ],
     "add_date": "05/06/2018",
-    "route_setter": "Adi"
+    "route_setter": "Adi",
+    "notes": []
   }
 ]

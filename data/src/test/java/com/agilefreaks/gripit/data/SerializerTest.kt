@@ -28,7 +28,8 @@ class SerializerTest {
                     "    \"grade\": \"A2\"," +
                     "    \"type\": [\"Easy\"]," +
                     "    \"add_date\": \"June 2022\"," +
-                    "    \"route_setter\": \"Climber\"" +
+                    "    \"route_setter\": \"Climber\"," +
+                    "    \"notes\": \"note\"" +
                     "}" +
                     "]"
 
@@ -49,6 +50,7 @@ class SerializerTest {
         assertThat(routes1[0].id, `is`(not(routes2[1].id)))
         assertThat(routes1[0].routeSetter, `is`(equalTo(routes2[1].routeSetter)))
         assertThat(routes1[0].type, `is`(equalTo(routes2[1].type)))
+        assertThat(routes1[0].notes, `is`(not(equalTo(routes2[1].notes))))
     }
 
     @Test
@@ -58,5 +60,6 @@ class SerializerTest {
         assertThat(routes[0].id, `is`(1))
         assertThat(routes[0].name, `is`("Test Name"))
         assertThat(routes[0].type[0], `is`("Easy"))
+        assertThat(routes[1].notes, `is`("note"))
     }
 }

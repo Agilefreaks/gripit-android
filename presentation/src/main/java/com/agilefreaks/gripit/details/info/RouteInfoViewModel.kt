@@ -14,6 +14,7 @@ class RouteInfoViewModel @Inject constructor(val useCase: GetRouteDetails) : Bas
     var type = ""
     var addDate = ""
     var routeSetter = ""
+    var notes = ""
 
     override fun onViewResume() {
     }
@@ -36,6 +37,7 @@ class RouteInfoViewModel @Inject constructor(val useCase: GetRouteDetails) : Bas
             type = item.type.joinToString()
             addDate = item.addDate
             routeSetter = item.routeSetter
+            notes = item.notes.joinToString()
             notifyChange()
         }
     }
