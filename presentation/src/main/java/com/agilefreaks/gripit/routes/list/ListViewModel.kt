@@ -18,6 +18,7 @@ class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable
     }
 
     override fun onViewDetached() {
+        useCase.dispose()
     }
 
     override fun onViewResume() {

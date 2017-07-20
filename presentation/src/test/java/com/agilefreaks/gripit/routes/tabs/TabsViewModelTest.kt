@@ -4,7 +4,7 @@ import android.support.design.widget.TabLayout
 import com.agilefreaks.gripit.core.Lifecycle
 import com.agilefreaks.gripit.domain.None
 import com.agilefreaks.gripit.domain.RouteFilter
-import com.agilefreaks.gripit.domain.interactor.GetFilterUseCase
+import com.agilefreaks.gripit.domain.interactor.GetFilter
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.mock
@@ -18,7 +18,7 @@ import org.junit.Test
 class TabsViewModelTest {
     lateinit var tabsViewModel: TabsContract.ViewModel
 
-    val mockGetFilterUseCase = mock<GetFilterUseCase>()
+    val mockGetFilterUseCase = mock<GetFilter>()
 
     @Before
     fun setup() {
@@ -40,7 +40,7 @@ class TabsViewModelTest {
     }
 
     @Test
-    fun onTabSelectionChanged()  {
+    fun onTabSelectionChanged() {
         val subject = BehaviorProcessor.create<TabLayout.Tab>()
         val subscriber = TestSubscriber<String>()
 

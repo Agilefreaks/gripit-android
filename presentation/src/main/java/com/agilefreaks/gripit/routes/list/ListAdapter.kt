@@ -25,6 +25,7 @@ class ListAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.View
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         val viewDataBinding: ViewDataBinding = (holder as RouteViewHolder).viewDataBinding
         viewDataBinding.setVariable(BR.route, RouteModel(routes[position]))
+
         viewDataBinding.root.setOnClickListener({
             controller.navigate(routes[position])
         })
