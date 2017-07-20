@@ -1,12 +1,12 @@
-package com.agilefreaks.gripit.details
+package com.agilefreaks.gripit.details.info
 
 import com.agilefreaks.gripit.core.Lifecycle
 
-class RouteDetailsContract {
+class RouteInfoContract {
     interface View : Lifecycle.View {
         fun getRouteId(): Int
-        fun setTabLayout()
     }
 
     interface ViewModel : Lifecycle.ViewModel
+
 }

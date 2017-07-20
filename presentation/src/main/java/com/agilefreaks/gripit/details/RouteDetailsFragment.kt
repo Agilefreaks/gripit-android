@@ -10,21 +10,18 @@ import com.agilefreaks.gripit.AndroidApplication
 import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.navigation.Navigator
-import com.agilefreaks.gripit.details.info.InfoPagerAdapter
+import com.agilefreaks.gripit.details.info.RouteInfoFragment
 import com.agilefreaks.gripit.view.BaseView
 import kotlinx.android.synthetic.main.fragment_route_details.*
 import javax.inject.Inject
 
-
 class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDetailsContract.ViewModel) : BaseView(), RouteDetailsContract.View {
     @Inject lateinit var navigator: Navigator
+    @Inject lateinit var routeInfoFragment: RouteInfoFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DaggerRouteDetailsComponent.builder().
-                applicationComponent((activity.application as AndroidApplication).applicationComponent).
-                build().
-                inject(this)
+        setupDagger()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -37,26 +34,32 @@ class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDeta
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCollapsibleBar()
-
-        tabs_route_details.addTab(tabs_route_details.newTab().setText("Info"))
-        tabs_route_details.addTab(tabs_route_details.newTab().setText("Me"))
-        tabs_route_details.addTab(tabs_route_details.newTab().setText("Others"))
-
-        val adapter = InfoPagerAdapter(activity.fragmentManager)
-        details_viewPager.adapter = adapter
-        tabs_route_details.setupWithViewPager(details_viewPager)
     }
 
     fun setCollapsibleBar() {
         val activity = activity as RouteDetailsActivity
         activity.setSupportActionBar(route_toolbar)
         activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        route_toolbar.setNavigationOnClickListener { navigator.navigateToRouteList() }
+        activity.supportActionBar?.setDisplayShowHomeEnabled(true)
+    }
+
+    override fun setTabLayout() {
+        val adapter = RouteDetailsPagerAdapter(activity.supportFragmentManager)
+        routeInfoFragment.arguments = forRoute(getRouteId())
+        adapter.addFragments(routeInfoFragment, "Info")
+        details_viewPager.adapter = adapter
+        tabs_route_details.setupWithViewPager(details_viewPager)
     }
 
     override fun getRouteId(): Int {
-        val arguments = arguments
         return arguments.getInt(PARAM_ROUTE_ID)
+    }
+
+    private fun setupDagger() {
+        DaggerRouteDetailsComponent.builder().
+                applicationComponent((activity.application as AndroidApplication).applicationComponent).
+                build().
+                inject(this)
     }
 
     companion object {
