@@ -22,7 +22,7 @@ class RouteDetailsModule {
     }
 
     @Provides fun provideRouteDetailsFragment(routeDetailsViewModel: RouteDetailsViewModel): RouteDetailsContract.View {
-        return RouteDetailsFragment(routeDetailsViewModel)
+        return RouteDetailsFragment.build(routeDetailsViewModel)
     }
 
     @Provides fun provideRoutePictureFragment(): RoutePictureFragment {
@@ -34,6 +34,6 @@ class RouteDetailsModule {
     }
 
     @Provides fun provideRouteInfoFragment(routeInfoViewModel: RouteInfoViewModel): RouteInfoFragment {
-        return RouteInfoFragment(routeInfoViewModel)
+        return RouteInfoFragment.build(routeInfoViewModel)
     }
 }

@@ -9,7 +9,16 @@ import com.agilefreaks.gripit.domain.Route
 import com.agilefreaks.gripit.view.BaseView
 import kotlinx.android.synthetic.main.fragment_route.*
 
-class ListFragment constructor(override val viewModel: ListContract.ViewModel, val listAdapter: ListAdapter) : BaseView(), ListContract.View {
+class ListFragment : BaseView(), ListContract.View {
+    override lateinit var viewModel: ListContract.ViewModel
+    lateinit var listAdapter: ListAdapter
+
+    companion object {
+        fun build(viewModel: ListContract.ViewModel, listAdapter: ListAdapter) = ListFragment().also {
+            it.viewModel = viewModel
+            it.listAdapter = listAdapter
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: android.os.Bundle?): android.view.View? {
         super.onCreateView(inflater, container, savedInstanceState)

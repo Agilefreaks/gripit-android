@@ -37,7 +37,7 @@ class RoutesModule {
     }
 
     @Provides fun providesListView(listViewModel: ListContract.ViewModel, listAdapter: ListAdapter): ListContract.View {
-        return ListFragment(listViewModel, listAdapter)
+        return ListFragment.build(listViewModel, listAdapter)
     }
 
     @Provides fun provideRouteRepository(routeDataRepository: RouteDataRepository): RouteRepository {
