@@ -3,6 +3,7 @@ package com.agilefreaks.gripit.details
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +16,10 @@ import com.agilefreaks.gripit.view.BaseView
 import kotlinx.android.synthetic.main.fragment_route_details.*
 import javax.inject.Inject
 
-class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDetailsContract.ViewModel) : BaseView(), RouteDetailsContract.View {
+class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
     @Inject lateinit var navigator: Navigator
     @Inject lateinit var routeInfoFragment: RouteInfoFragment
+    override lateinit var viewModel: RouteDetailsContract.ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +29,9 @@ class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDeta
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.fragment_route_details, container, false)
+
         binding.setVariable(BR.viewModel, viewModel)
+
         return binding.root
     }
 
@@ -41,12 +45,11 @@ class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDeta
         activity.setSupportActionBar(route_toolbar)
         activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         activity.supportActionBar?.setDisplayShowHomeEnabled(true)
+        route_toolbar.setNavigationOnClickListener { navigator.navigateToRouteList() }
     }
 
     override fun setTabLayout() {
-        val adapter = RouteDetailsPagerAdapter(activity.supportFragmentManager)
-        routeInfoFragment.arguments = forRoute(getRouteId())
-        adapter.addFragments(routeInfoFragment, "Info")
+        val adapter = RouteDetailsPagerAdapter(childFragmentManager)
         details_viewPager.adapter = adapter
         tabs_route_details.setupWithViewPager(details_viewPager)
     }
@@ -69,6 +72,10 @@ class RouteDetailsFragment @Inject constructor(override val viewModel: RouteDeta
             val args = Bundle()
             args.putInt(RouteDetailsFragment.PARAM_ROUTE_ID, routeId)
             return args
+        }
+
+        fun build(viewModel: RouteDetailsContract.ViewModel) = RouteDetailsFragment().also {
+            it.viewModel = viewModel
         }
     }
 }

@@ -10,9 +10,15 @@ import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.details.RouteDetailsFragment
 import com.agilefreaks.gripit.view.BaseView
-import javax.inject.Inject
 
-class RouteInfoFragment @Inject constructor(override val viewModel: RouteInfoContract.ViewModel) : BaseView(), RouteInfoContract.View {
+class RouteInfoFragment : BaseView(), RouteInfoContract.View {
+    override lateinit var viewModel: RouteInfoContract.ViewModel
+
+    companion object {
+        fun build(viewModel: RouteInfoContract.ViewModel) = RouteInfoFragment().also {
+            it.viewModel = viewModel
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -12,6 +12,7 @@ class RouteDetailsPagerAdapter(fragmentManager: FragmentManager) : FragmentState
     fun addFragments(fragment: Fragment, title: String) {
         fragments.add(fragment)
         titles.add(title)
+        notifyDataSetChanged()
     }
 
     override fun getItem(position: Int): Fragment {

@@ -8,5 +8,4 @@ class RouteInfoContract {
     }
 
     interface ViewModel : Lifecycle.ViewModel
-
 }
