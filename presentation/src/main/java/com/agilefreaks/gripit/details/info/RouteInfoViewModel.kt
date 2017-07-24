@@ -25,6 +25,7 @@ class RouteInfoViewModel @Inject constructor(val useCase: GetRouteDetails) : Bas
     }
 
     override fun onViewDetached() {
+        useCase.dispose()
     }
 
     override fun onViewPaused() {
