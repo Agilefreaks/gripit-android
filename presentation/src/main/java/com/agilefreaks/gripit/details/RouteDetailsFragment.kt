@@ -48,8 +48,9 @@ class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
     }
 
     override fun setTabLayout() {
-        routeInfoFragment.arguments = arguments
-
+        if(routeInfoFragment.arguments == null) {
+            routeInfoFragment.arguments = arguments
+        }
         details_viewPager.adapter = RouteDetailsPagerAdapter(childFragmentManager).also {
             it.addFragment(routeInfoFragment, "Info")
         }

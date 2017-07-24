@@ -4,7 +4,6 @@ import android.databinding.BaseObservable
 import android.view.View
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.Lifecycle
-import com.agilefreaks.gripit.core.model.RouteModel
 import com.agilefreaks.gripit.details.picture.RoutePictureFragment
 import com.agilefreaks.gripit.domain.Route
 import com.agilefreaks.gripit.domain.interactor.DefaultObserver
@@ -15,14 +14,14 @@ import javax.inject.Inject
 class RouteDetailsViewModel @Inject constructor(val useCase: GetRouteDetails) : BaseObservable(), RouteDetailsContract.ViewModel {
     @Inject lateinit var routePictureFragment: RoutePictureFragment
     lateinit var viewCallback: RouteDetailsContract.View
-    lateinit var route: RouteModel
+    var routeName: String = ""
+    var routeImageLocation: String = ""
 
     override fun onViewResume() {
     }
 
     override fun onViewAttached(viewCallback: Lifecycle.View) {
         this.viewCallback = viewCallback as RouteDetailsContract.View
-        route = RouteModel(Route())
         useCase.execute(RouteDetailsObserver(), viewCallback.getRouteId())
         viewCallback.setTabLayout()
     }
@@ -43,8 +42,9 @@ class RouteDetailsViewModel @Inject constructor(val useCase: GetRouteDetails) : 
 
     inner class RouteDetailsObserver : DefaultObserver<Route>() {
         override fun onNext(item: Route) {
-            route = RouteModel(item)
-            routePictureFragment.arguments = RoutePictureFragment.forPicture(route.imageLocation)
+            routeName = item.name
+            routeImageLocation = item.imageLocation
+            routePictureFragment.arguments = RoutePictureFragment.forPicture(item.imageLocation)
             notifyChange()
         }
     }
