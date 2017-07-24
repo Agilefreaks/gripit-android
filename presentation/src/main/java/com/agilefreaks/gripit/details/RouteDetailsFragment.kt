@@ -3,7 +3,6 @@ package com.agilefreaks.gripit.details
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,8 +48,12 @@ class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
     }
 
     override fun setTabLayout() {
-        val adapter = RouteDetailsPagerAdapter(childFragmentManager)
-        details_viewPager.adapter = adapter
+        routeInfoFragment.arguments = arguments
+
+        details_viewPager.adapter = RouteDetailsPagerAdapter(childFragmentManager).also {
+            it.addFragment(routeInfoFragment, "Info")
+        }
+
         tabs_route_details.setupWithViewPager(details_viewPager)
     }
 

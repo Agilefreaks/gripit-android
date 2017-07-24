@@ -9,7 +9,7 @@ class RouteDetailsPagerAdapter(fragmentManager: FragmentManager) : FragmentState
     val fragments = mutableListOf<Fragment>()
     val titles = mutableListOf<String>()
 
-    fun addFragments(fragment: Fragment, title: String) {
+    fun addFragment(fragment: Fragment, title: String) {
         fragments.add(fragment)
         titles.add(title)
         notifyDataSetChanged()
