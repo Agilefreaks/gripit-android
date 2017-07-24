@@ -33,7 +33,7 @@ class TabsViewModelTest {
     }
 
     @Test
-    fun onViewDetacheddWillDispose() {
+    fun onViewDetachedWillDispose() {
         tabsViewModel.onViewDetached()
 
         verify(mockGetFilterUseCase).dispose()
