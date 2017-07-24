@@ -10,14 +10,13 @@
     </data>
 
     <android.support.v4.widget.NestedScrollView
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         >
 
         <android.support.constraint.ConstraintLayout
-
+            android:id="@+id/info_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout_editor_absoluteX="0dp"

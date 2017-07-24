@@ -5,12 +5,10 @@ import android.support.test.espresso.ViewInteraction
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.assertion.ViewAssertions.selectedDescendantsMatch
-import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.agilefreaks.gripit.R
-import com.agilefreaks.gripit.details.RouteDetailsActivity
 import com.agilefreaks.gripit.matchers.ImageViewHasDrawableMatcher.hasDrawable
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.Rule
@@ -20,7 +18,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class RoutesActivityTest {
     @Rule @JvmField val activityRoutesRule: ActivityTestRule<RoutesActivity> = ActivityTestRule(RoutesActivity::class.java)
-    @Rule @JvmField val activityDetailsRule: ActivityTestRule<RouteDetailsActivity> = ActivityTestRule(RouteDetailsActivity::class.java)
+//    @Rule @JvmField val activityDetailsRule: ActivityTestRule<RouteDetailsActivity> = ActivityTestRule(RouteDetailsActivity::class.java)
 
     val routeCollectionView: ViewInteraction by lazy { onView(withId(R.id.route_collection)) }
     val tabsView: ViewInteraction by lazy { onView(withId(R.id.tabs)) }
@@ -34,7 +32,7 @@ class RoutesActivityTest {
     }
 
     @Test fun testThatTabsAreListed() {
-        tabsView.check(matches(hasDescendant(withText("No Filter"))))
+        tabsView.check(matches(hasDescendant(withText("All"))))
         tabsView.check(matches(hasDescendant(withText("Easy"))))
         tabsView.check(matches(hasDescendant(withText("Hard"))))
     }
@@ -49,6 +47,6 @@ class RoutesActivityTest {
     @Test fun testThatNavigationWorks() {
         onView(allOf(withText("Route 1"), isDescendantOfA(withId(R.id.route_collection)))).perform(click())
 
-        onView(withId(R.id.route_toolbar)).check(matches(withText("Route 1")))
+        onView(withId(R.id.route_toolbar)).check(matches(hasDescendant(withText("Route 1"))))
     }
 }
