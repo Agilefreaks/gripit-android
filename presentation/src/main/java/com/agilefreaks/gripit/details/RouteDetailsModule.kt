@@ -6,6 +6,7 @@ import com.agilefreaks.gripit.details.info.RouteInfoContract
 import com.agilefreaks.gripit.details.info.RouteInfoFragment
 import com.agilefreaks.gripit.details.info.RouteInfoViewModel
 import com.agilefreaks.gripit.details.picture.RoutePictureFragment
+import com.agilefreaks.gripit.details.picture.RoutePictureViewModel
 import com.agilefreaks.gripit.domain.interactor.GetRouteDetails
 import com.agilefreaks.gripit.domain.repository.RouteRepository
 import dagger.Module
@@ -21,12 +22,16 @@ class RouteDetailsModule {
         return RouteInfoViewModel(getRouteDetails)
     }
 
+    @Provides @PerActivity fun provideRoutePictureViewModel(): RoutePictureViewModel {
+        return RoutePictureViewModel()
+    }
+
     @Provides fun provideRouteDetailsFragment(routeDetailsViewModel: RouteDetailsViewModel): RouteDetailsContract.View {
         return RouteDetailsFragment.build(routeDetailsViewModel)
     }
 
-    @Provides fun provideRoutePictureFragment(): RoutePictureFragment {
-        return RoutePictureFragment()
+    @Provides fun provideRoutePictureFragment(routePictureViewModel: RoutePictureViewModel): RoutePictureFragment {
+        return RoutePictureFragment.build(routePictureViewModel)
     }
 
     @Provides fun provideRouteRepository(routeDataRepository: RouteDataRepository): RouteRepository {

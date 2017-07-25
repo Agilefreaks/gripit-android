@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:ignore="UnusedResources">
+    <data>
 
-    <com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/route_detail_picture"
-        style="@style/AppTheme.PictureScreen"
+        <variable
+            name="viewModel"
+            type="com.agilefreaks.gripit.details.picture.RoutePictureViewModel"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        />
+        tools:ignore="UnusedResources">
 
-</android.support.design.widget.CoordinatorLayout>
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/route_detail_picture"
+            style="@style/AppTheme.PictureScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            bind:image="@{viewModel.routeImageLocation}"
+            />
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

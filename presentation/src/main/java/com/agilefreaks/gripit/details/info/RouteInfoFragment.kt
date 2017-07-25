@@ -24,14 +24,14 @@ class RouteInfoFragment : BaseView(), RouteInfoContract.View {
         super.onCreate(savedInstanceState)
     }
 
-    override fun getRouteId(): Int {
-        return arguments.getInt(RouteDetailsFragment.PARAM_ROUTE_ID)
-    }
+    override fun getRouteId(): Int = arguments.getInt(RouteDetailsFragment.PARAM_ROUTE_ID)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.fragment_route_info, container, false)
+
         binding.setVariable(BR.viewModel, viewModel)
+
         return binding.root
     }
 }

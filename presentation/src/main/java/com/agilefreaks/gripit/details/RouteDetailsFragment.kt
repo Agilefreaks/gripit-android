@@ -30,7 +30,6 @@ class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
         val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.fragment_route_details, container, false)
 
         binding.setVariable(BR.viewModel, viewModel)
-        setTabLayout()
 
         return binding.root
     }
@@ -38,6 +37,7 @@ class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCollapsibleBar()
+        setTabLayout()
     }
 
     fun setCollapsibleBar() {

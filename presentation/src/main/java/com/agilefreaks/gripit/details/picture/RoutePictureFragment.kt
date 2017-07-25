@@ -1,33 +1,28 @@
 package com.agilefreaks.gripit.details.picture
 
+import android.databinding.DataBindingUtil
+import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_route_picture.*
+import com.agilefreaks.gripit.view.BaseView
 
-class RoutePictureFragment : Fragment() {
+class RoutePictureFragment : BaseView(), RoutePictureContract.View {
+    override lateinit var viewModel: RoutePictureContract.ViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_route_picture, container, false)
+        val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.fragment_route_picture, container, false)
+
+        binding.setVariable(BR.viewModel, viewModel)
+
+        return binding.root
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        if (savedInstanceState == null) {
-            loadRoutePicture()
-        }
-    }
-
-    private fun loadRoutePicture() {
-        val arguments = arguments
-        Picasso.with(context).load("file:///android_asset/" + arguments.getString(PARAM_ROUTE_PICTURE)).
-                into(route_detail_picture)
-    }
+    override fun getRoutePictureLocation(): String = arguments.getString(PARAM_ROUTE_PICTURE)
 
     companion object {
         val PARAM_ROUTE_PICTURE = "param_route_picture_location"
@@ -36,6 +31,10 @@ class RoutePictureFragment : Fragment() {
             val args = Bundle()
             args.putString(PARAM_ROUTE_PICTURE, routePicture)
             return args
+        }
+
+        fun build(viewModel: RoutePictureContract.ViewModel) = RoutePictureFragment().also {
+            it.viewModel = viewModel
         }
     }
 }
