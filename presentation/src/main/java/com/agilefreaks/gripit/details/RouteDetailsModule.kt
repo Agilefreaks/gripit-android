@@ -5,6 +5,8 @@ import com.agilefreaks.gripit.data.repository.RouteDataRepository
 import com.agilefreaks.gripit.details.info.RouteInfoContract
 import com.agilefreaks.gripit.details.info.RouteInfoFragment
 import com.agilefreaks.gripit.details.info.RouteInfoViewModel
+import com.agilefreaks.gripit.details.me.RouteMeFragment
+import com.agilefreaks.gripit.details.me.RouteMeViewModel
 import com.agilefreaks.gripit.details.picture.RoutePictureFragment
 import com.agilefreaks.gripit.details.picture.RoutePictureViewModel
 import com.agilefreaks.gripit.domain.interactor.GetRouteDetails
@@ -26,12 +28,20 @@ class RouteDetailsModule {
         return RoutePictureViewModel()
     }
 
+    @Provides @PerActivity fun provideRouteMeViewModel(): RouteMeViewModel {
+        return RouteMeViewModel()
+    }
+
     @Provides fun provideRouteDetailsFragment(routeDetailsViewModel: RouteDetailsViewModel): RouteDetailsContract.View {
         return RouteDetailsFragment.build(routeDetailsViewModel)
     }
 
     @Provides fun provideRoutePictureFragment(routePictureViewModel: RoutePictureViewModel): RoutePictureFragment {
         return RoutePictureFragment.build(routePictureViewModel)
+    }
+
+    @Provides fun provideRouteMeFragment(routeMeViewModel: RouteMeViewModel): RouteMeFragment {
+        return RouteMeFragment.build(routeMeViewModel)
     }
 
     @Provides fun provideRouteRepository(routeDataRepository: RouteDataRepository): RouteRepository {

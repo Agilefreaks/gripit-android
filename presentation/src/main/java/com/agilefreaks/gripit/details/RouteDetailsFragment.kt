@@ -11,6 +11,7 @@ import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.details.info.RouteInfoFragment
+import com.agilefreaks.gripit.details.me.RouteMeFragment
 import com.agilefreaks.gripit.view.BaseView
 import kotlinx.android.synthetic.main.fragment_route_details.*
 import javax.inject.Inject
@@ -18,6 +19,7 @@ import javax.inject.Inject
 class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
     @Inject lateinit var navigator: Navigator
     @Inject lateinit var routeInfoFragment: RouteInfoFragment
+    @Inject lateinit var routeMeFragment: RouteMeFragment
     override lateinit var viewModel: RouteDetailsContract.ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,12 +51,13 @@ class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
     }
 
     fun setTabLayout() {
-        if(routeInfoFragment.arguments == null) {
+        if (routeInfoFragment.arguments == null) {
             routeInfoFragment.arguments = arguments
         }
 
         details_viewPager.adapter = RouteDetailsPagerAdapter(childFragmentManager).also {
             it.addFragment(routeInfoFragment, "Info")
+            it.addFragment(routeMeFragment, "Route Me")
         }
 
         tabs_route_details.setupWithViewPager(details_viewPager)
