@@ -1,7 +1,7 @@
 package com.agilefreaks.gripit
 
-import org.junit.jupiter.api.Test
 import org.assertj.core.api.Java6Assertions.assertThat
+import org.junit.Test
 
 class ExampleUnitTest {
     @Test

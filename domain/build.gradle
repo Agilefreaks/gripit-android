@@ -1,18 +1,13 @@
 apply plugin: 'java'
 apply plugin: 'kotlin'
-apply plugin: 'org.junit.platform.gradle.plugin'
-
-junitPlatform {
-    platformVersion rootProject.ext.junitPluginVersion
-}
 
 dependencies {
+    compile 'javax.inject:javax.inject:1'
     compile "io.reactivex.rxjava2:rxkotlin:$rxVersion"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
 
     // Dependencies for local unit tests
-    testCompile "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
-    testRuntime "org.junit.jupiter:junit-jupiter-engine:$jupiterVersion"
+    testCompile "junit:junit:$junitVersion"
     testCompile "org.assertj:assertj-core:$assertjVersion"
     testCompile "org.mockito:mockito-core:$mockitoVersion"
 }

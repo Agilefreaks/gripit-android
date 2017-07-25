@@ -1,11 +1,58 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- Light Indigo -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- Dark Indigo -->
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- Blue -->
     </style>
 
+    <style name="AppTheme" parent="AppTheme.Base"></style>
+
+    <style name="Widget"/>
+
+    <style name="Widget.Gripit.Item.Card" parent="Widget">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">@dimen/card_margin</item>
+        <item name="cardCornerRadius">2dp</item>
+        <item name="cardElevation">2dp</item>
+    </style>
+
+    <style name="Widget.Gripit.RecyclerView" parent="Widget">
+        <item name="android:stretchMode">columnWidth</item>
+        <item name="android:numColumns">auto_fit</item>
+        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:horizontalSpacing">0dp</item>
+        <item name="android:verticalSpacing">0dp</item>
+    </style>
+
+    <style name="Widget.Gripit.Item.Title" parent="Widget">
+        <item name="android:layout_marginBottom">@dimen/margin_tiny</item>
+        <item name="android:textAppearance">?android:textAppearanceLarge</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/text_large</item>
+    </style>
+
+    <style name="Widget.Gripit.Item.Grade" parent="Widget">
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.Gripit.Item.Type" parent="Widget">
+        <item name="android:layout_marginEnd">1dp</item>
+        <item name="android:layout_marginStart">1dp</item>
+        <item name="android:background">@drawable/bg_pill</item>
+        <item name="android:paddingBottom">@dimen/padding_extra_tiny</item>
+        <item name="android:paddingTop">@dimen/padding_extra_tiny</item>
+        <item name="android:paddingEnd">@dimen/margin_small</item>
+        <item name="android:paddingStart">@dimen/margin_small</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

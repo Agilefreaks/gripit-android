@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="route"
+            type="com.agilefreaks.gripit.routes.list.model.RouteModel"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        xmlns:support="http://schemas.android.com/tools"
+        style="@style/Widget.Gripit.Item.Card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/route_image"
+                android:layout_width="@dimen/route_image_dimen"
+                android:layout_height="@dimen/route_image_dimen"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:contentDescription="@string/placeholder"
+                app:image="@{route.imageLocation}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"/>
+
+            <TextView
+                android:id="@+id/route_name"
+                style="@style/Widget.Gripit.Item.Title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_medium_large"
+                android:text="@{route.name}"
+                android:textAlignment="viewStart"
+                app:layout_constraintLeft_toRightOf="@+id/route_image"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/route_grade"
+                style="@style/Widget.Gripit.Item.Grade"
+                android:layout_width="@dimen/route_grade_dimen"
+                android:layout_height="@dimen/route_grade_dimen"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@drawable/ic_circle_green"
+                android:gravity="center"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@+id/route_image"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/route_name"
+                app:layout_constraintVertical_chainStyle="packed"
+                support:color="@{route.grade}"
+                support:text="@{route.grade}"
+                android:layout_marginBottom="@dimen/margin_small"
+                app:layout_constraintBottom_toTopOf="@+id/route_types"
+                app:layout_constraintVertical_bias="0.5"/>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/route_types"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium_large"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_small"
+                android:orientation="vertical"
+                app:flexWrap="wrap"
+                app:items="@{route.type}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/route_image"
+                app:layout_constraintRight_toRightOf="parent"
+                />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+</layout>

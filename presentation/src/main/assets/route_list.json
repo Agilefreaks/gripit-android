@@ -1,0 +1,69 @@
+[
+  {
+    "id": 1,
+    "name": "Red holds",
+    "image_location": "traseul1.png",
+    "grade": "7A",
+    "type": [
+      "Technical",
+      "Crimpers"
+    ],
+    "add_date": "05/03/2017",
+    "route_setter": "Adi"
+  },
+  {
+    "id": 2,
+    "name": "Green holds",
+    "image_location": "traseul2.png",
+    "grade": "6C+",
+    "type": [
+      "Dyno",
+      "Compression"
+    ],
+    "add_date": "05/06/2017",
+    "route_setter": "Alex",
+    "notes": [
+      "Nu ai voie sa pui mana pe volum."
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Crimp power",
+    "image_location": "traseul3.png",
+    "grade": "8C",
+    "type": [
+      "Power",
+      "Crimpers",
+      "Endurance"
+    ],
+    "add_date": "01/01/2017",
+    "route_setter": "Dani",
+    "notes": [
+      "Cu orice la picioare"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Pedal to the metal",
+    "image_location": "traseul4.png",
+    "grade": "6A",
+    "type": [
+      "Stretchy",
+      "Technical"
+    ],
+    "add_date": "03/03/2017",
+    "route_setter": "Alex"
+  },
+  {
+    "id": 5,
+    "name": "Jump!",
+    "image_location": "traseul5.png",
+    "grade": "6B",
+    "type": [
+      "Dyno",
+      "Slopers"
+    ],
+    "add_date": "05/06/2018",
+    "route_setter": "Adi"
+  }
+]

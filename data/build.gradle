@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'de.mannodermaus.android-junit5'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -15,20 +14,18 @@ android {
     }
 }
 
-junitPlatform {
-    jupiterVersion rootProject.ext.jupiterVersion
-    platformVersion rootProject.ext.junitPluginVersion
-}
-
 dependencies {
     compile project(':domain')
 
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile "io.reactivex.rxjava2:rxkotlin:$rxVersion"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+    compile "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    compile "com.google.code.gson:gson:$gsonVersion"
 
     // Dependencies for local unit tests
-    testCompile junitJupiter()
+    testCompile "junit:junit:$junitVersion"
     testCompile "org.assertj:assertj-core:$assertjVersion"
     testCompile "org.mockito:mockito-core:$mockitoVersion"
 }
