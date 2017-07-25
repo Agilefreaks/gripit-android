@@ -2,10 +2,9 @@ package com.agilefreaks.gripit.routes.list
 
 import android.databinding.BaseObservable
 import com.agilefreaks.gripit.core.Lifecycle
-import com.agilefreaks.gripit.domain.Route
 import com.agilefreaks.gripit.domain.Types
-import com.agilefreaks.gripit.domain.interactor.DefaultObserver
 import com.agilefreaks.gripit.domain.interactor.GetRoutes
+import io.reactivex.functions.Consumer
 import javax.inject.Inject
 
 class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable(), ListContract.ViewModel {
@@ -18,7 +17,7 @@ class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable
     }
 
     override fun onViewDetached() {
-        useCase.dispose()
+        // TODO: Calling dispose on usecase here breaks list filtering
     }
 
     override fun onViewResume() {
@@ -29,12 +28,6 @@ class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable
 
     override fun filter(filter: String) {
         cachedFilter = filter
-        useCase.execute(RoutesObserver(), filter)
-    }
-
-    inner class RoutesObserver : DefaultObserver<Collection<Route>>() {
-        override fun onNext(item: Collection<Route>) {
-            viewCallback.showRoutes(item)
-        }
+        useCase.executeWithConsumer(Consumer({ viewCallback.showRoutes(it) }), filter)
     }
 }

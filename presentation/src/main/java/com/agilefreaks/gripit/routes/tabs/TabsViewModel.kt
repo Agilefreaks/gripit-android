@@ -20,6 +20,7 @@ class TabsViewModel @Inject constructor(val useCase: GetFilter) : BaseObservable
     companion object {
         @JvmStatic @BindingAdapter("android:tabs")
         fun setTabs(tabs: TabLayout, routeFilters: Collection<RouteFilter>) {
+            tabs.removeAllTabs()
             routeFilters.forEach {
                 val tab = tabs.newTab()
                 tab.text = it.type
