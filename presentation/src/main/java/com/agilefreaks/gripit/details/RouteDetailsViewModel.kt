@@ -23,7 +23,6 @@ class RouteDetailsViewModel @Inject constructor(val useCase: GetRouteDetails) : 
     override fun onViewAttached(viewCallback: Lifecycle.View) {
         this.viewCallback = viewCallback as RouteDetailsContract.View
         useCase.execute(RouteDetailsObserver(), viewCallback.getRouteId())
-        viewCallback.setTabLayout()
     }
 
     override fun onViewDetached() {

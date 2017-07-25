@@ -30,6 +30,7 @@ class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
         val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.fragment_route_details, container, false)
 
         binding.setVariable(BR.viewModel, viewModel)
+        setTabLayout()
 
         return binding.root
     }
@@ -47,10 +48,11 @@ class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
         route_toolbar.setNavigationOnClickListener { navigator.navigateToRouteList() }
     }
 
-    override fun setTabLayout() {
+    fun setTabLayout() {
         if(routeInfoFragment.arguments == null) {
             routeInfoFragment.arguments = arguments
         }
+
         details_viewPager.adapter = RouteDetailsPagerAdapter(childFragmentManager).also {
             it.addFragment(routeInfoFragment, "Info")
         }
