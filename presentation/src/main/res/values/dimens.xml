@@ -36,4 +36,7 @@
     <dimen name="text_route_comm_margin_bot">48dp</dimen>
     <dimen name="route_setter_comments_height">146dp</dimen>
     <dimen name="route_setter_comments_witdh">0dp</dimen>
+    <dimen name="route_me_date_margin">72dp</dimen>
+    <dimen name="route_me_date_text_size">16sp</dimen>
+    <dimen name="route_me_thumbnail_dimen">40dp</dimen>
 </resources>

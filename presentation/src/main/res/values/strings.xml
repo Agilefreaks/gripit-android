@@ -11,4 +11,6 @@
     <string name="add_date_label">Add Date</string>
     <string name="route_setter_label">Route Setter</string>
     <string name="route_setter_comments_label">Route setter comments</string>
+    <string name="image_thumbnail">Image thumbnail</string>
+    <string name="play_icon">Play icon</string>
 </resources>
