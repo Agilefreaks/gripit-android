@@ -16,14 +16,14 @@ import com.squareup.picasso.Picasso
 
 class DatabindingHelper {
     companion object {
-        @JvmStatic @BindingAdapter("bind:image") fun loadImage(view: ImageView, imageLocation: String?) {
+        @JvmStatic @BindingAdapter("image") fun loadImage(view: ImageView, imageLocation: String?) {
             if (imageLocation != null) {
                 Picasso.with(view.context).load("file:///android_asset/" + imageLocation).
                         into(view)
             }
         }
 
-        @JvmStatic @BindingAdapter("bind:types") fun loadTypes(viewGroup: ViewGroup, entries: List<String>?) {
+        @JvmStatic @BindingAdapter("types") fun loadTypes(viewGroup: ViewGroup, entries: List<String>?) {
             viewGroup.removeAllViews()
             if (entries != null) {
                 val inflater = viewGroup.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -36,7 +36,7 @@ class DatabindingHelper {
             }
         }
 
-        @JvmStatic @BindingAdapter("bind:color") fun loadColor(view: TextView, routeName: String?) {
+        @JvmStatic @BindingAdapter("color") fun loadColor(view: TextView, routeName: String?) {
             if (routeName != null) {
                 val colorValue = RouteColor.from(routeName.first())
                 when (colorValue) {

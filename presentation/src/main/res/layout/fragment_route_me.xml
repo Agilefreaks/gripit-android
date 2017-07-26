@@ -12,13 +12,15 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_small"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="com.agilefreaks.gripit.details.info.RouteInfoFragment">
 
-        <TextView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/route_me_collection"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/blank_fragment"/>
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"/>
 
     </android.support.v4.widget.NestedScrollView>
 </layout>
