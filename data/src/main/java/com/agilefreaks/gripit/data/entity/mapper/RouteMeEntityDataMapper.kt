@@ -4,9 +4,7 @@ import com.agilefreaks.gripit.data.entity.RouteMeEntity
 import com.agilefreaks.gripit.domain.RouteMe
 import javax.inject.Inject
 
-/**
- * Created by Mihai on 26.07.2017.
- */
+
 class RouteMeEntityDataMapper @Inject internal constructor() {
 
     fun transform(routeMeEntity: RouteMeEntity): RouteMe {

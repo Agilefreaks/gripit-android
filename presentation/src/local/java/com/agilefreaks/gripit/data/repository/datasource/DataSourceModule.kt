@@ -7,5 +7,7 @@ import dagger.Provides
 
 @Module
 class DataSourceModule {
-    @Provides fun provideRouteDataStore(serializer: Serializer, assetManager: AssetManager) : RouteDataStore = DiskRouteDataStore(serializer, assetManager)
+    @Provides fun provideRouteDataStore(serializer: Serializer, assetManager: AssetManager): RouteDataStore = DiskRouteDataStore(serializer, assetManager)
+
+    @Provides fun provideRouteMeMemoryDataStore(): RouteMeDataStore = RouteMeMemoryDataStore()
 }
