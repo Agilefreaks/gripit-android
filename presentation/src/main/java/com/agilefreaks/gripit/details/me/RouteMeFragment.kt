@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
+import com.agilefreaks.gripit.details.RouteDetailsFragment
+import com.agilefreaks.gripit.domain.RouteMe
 import com.agilefreaks.gripit.view.BaseView
 import kotlinx.android.synthetic.main.fragment_route_me.*
 
@@ -37,6 +39,10 @@ class RouteMeFragment : BaseView(), RouteMeContract.View {
         super.onActivityCreated(savedInstanceState)
         setupRouteCollection()
     }
+
+    override fun addRouteMe(routeMeList: Collection<RouteMe>) = routeMeAdapter.addRouteMe(routeMeList)
+
+    override fun getRouteId(): Int = arguments.getInt(RouteDetailsFragment.PARAM_ROUTE_ID)
 
     private fun setupRouteCollection() {
         route_me_collection.layoutManager = LinearLayoutManager(this.context)

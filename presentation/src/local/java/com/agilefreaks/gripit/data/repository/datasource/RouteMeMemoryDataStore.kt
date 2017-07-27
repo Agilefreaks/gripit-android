@@ -14,12 +14,11 @@ class RouteMeMemoryDataStore : RouteMeDataStore {
 
         android.util.Log.wtf("TIME:",time)
 
-        return Observable.fromArray(listOf(RouteMeEntity(0, "placeholder.jpg", time),
-                RouteMeEntity(0, "placeholder.jpg", "/06/2017 15:00"),
-                RouteMeEntity(1, "placeholder.jpg", "05/06/2017 15:00"),
-                RouteMeEntity(1, "placeholder.jpg", "05/06/2017 15:00"),
-                RouteMeEntity(3, "placeholder.jpg", "05/06/2017 15:00")
+        return Observable.fromArray(listOf(RouteMeEntity(1, "placeholder.jpg", time),
+                RouteMeEntity(1, "placeholder.jpg", "28/06/2017 15:00"),
+                RouteMeEntity(2, "placeholder.jpg", "05/06/2017 15:00"),
+                RouteMeEntity(2, "placeholder.jpg", "05/06/2017 15:00"),
+                RouteMeEntity(4, "placeholder.jpg", "05/06/2017 15:00")
         ))
-
     }
 }

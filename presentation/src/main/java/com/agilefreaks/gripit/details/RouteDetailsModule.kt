@@ -1,7 +1,12 @@
 package com.agilefreaks.gripit.details
 
 import com.agilefreaks.gripit.core.di.PerActivity
+import com.agilefreaks.gripit.data.entity.mapper.RouteEntityDataMapper
+import com.agilefreaks.gripit.data.entity.mapper.RouteMeEntityDataMapper
 import com.agilefreaks.gripit.data.repository.RouteDataRepository
+import com.agilefreaks.gripit.data.repository.RouteMeDataRepository
+import com.agilefreaks.gripit.data.repository.datasource.RouteDataStore
+import com.agilefreaks.gripit.data.repository.datasource.RouteMeDataStore
 import com.agilefreaks.gripit.details.info.RouteInfoContract
 import com.agilefreaks.gripit.details.info.RouteInfoFragment
 import com.agilefreaks.gripit.details.info.RouteInfoViewModel
@@ -11,6 +16,8 @@ import com.agilefreaks.gripit.details.me.RouteMeViewModel
 import com.agilefreaks.gripit.details.picture.RoutePictureFragment
 import com.agilefreaks.gripit.details.picture.RoutePictureViewModel
 import com.agilefreaks.gripit.domain.interactor.GetRouteDetails
+import com.agilefreaks.gripit.domain.interactor.GetRouteMe
+import com.agilefreaks.gripit.domain.repository.RouteMeRepository
 import com.agilefreaks.gripit.domain.repository.RouteRepository
 import dagger.Module
 import dagger.Provides
@@ -29,8 +36,8 @@ class RouteDetailsModule {
         return RoutePictureViewModel()
     }
 
-    @Provides @PerActivity fun provideRouteMeViewModel(): RouteMeViewModel {
-        return RouteMeViewModel()
+    @Provides @PerActivity fun provideRouteMeViewModel(useCase: GetRouteMe): RouteMeViewModel {
+        return RouteMeViewModel(useCase)
     }
 
     @Provides fun provideRouteMeAdapter(): RouteMeAdapter {
@@ -49,8 +56,12 @@ class RouteDetailsModule {
         return RouteMeFragment.build(routeMeViewModel, routeMeAdapter)
     }
 
-    @Provides fun provideRouteRepository(routeDataRepository: RouteDataRepository): RouteRepository {
-        return routeDataRepository
+    @Provides fun provideRouteRepository(dataStore: RouteDataStore, entityDataMapper: RouteEntityDataMapper): RouteRepository {
+        return RouteDataRepository(dataStore, entityDataMapper)
+    }
+
+    @Provides fun provideRouteMeRepository(dataStore: RouteMeDataStore, entityDataMapper: RouteMeEntityDataMapper): RouteMeRepository {
+        return RouteMeDataRepository(dataStore, entityDataMapper)
     }
 
     @Provides fun provideRouteInfoFragment(routeInfoViewModel: RouteInfoViewModel): RouteInfoFragment {

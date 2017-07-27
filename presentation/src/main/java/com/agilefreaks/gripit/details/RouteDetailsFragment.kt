@@ -53,6 +53,7 @@ class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
     fun setTabLayout() {
         if (routeInfoFragment.arguments == null) {
             routeInfoFragment.arguments = arguments
+            routeMeFragment.arguments = arguments
         }
 
         details_viewPager.adapter = RouteDetailsPagerAdapter(childFragmentManager).also {

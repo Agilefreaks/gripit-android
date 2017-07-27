@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.model.RouteMeModel
+import com.agilefreaks.gripit.domain.RouteMe
 import javax.inject.Inject
 
 class RouteMeAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    val routeMeList: MutableList<RouteMeModel> = mutableListOf(RouteMeModel(date = "10/10/2010"), RouteMeModel(date = "10/10/2010"))
+    val routeMeList: MutableList<RouteMeModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding: ViewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.route_me_view, parent, false)
@@ -25,6 +26,11 @@ class RouteMeAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.V
 
     override fun getItemCount(): Int {
         return routeMeList.size
+    }
+
+    fun addRouteMe(routeMeList: Collection<RouteMe>) {
+        this.routeMeList.addAll(routeMeList.map { RouteMeModel(it.imageLocation, it.dateAdded) })
+        notifyDataSetChanged()
     }
 
     internal class RouteMeViewHolder(val viewDataBinding: ViewDataBinding) : RecyclerView.ViewHolder(viewDataBinding.root) {
