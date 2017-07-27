@@ -8,7 +8,7 @@ import javax.inject.Inject
 class RouteMeEntityDataMapper @Inject internal constructor() {
 
     fun transform(routeMeEntity: RouteMeEntity): RouteMe {
-        return RouteMe(routeMeEntity.imageLocation, routeMeEntity.dateAdded)
+        return RouteMe(routeMeEntity.imageLocation, routeMeEntity.dateAdded, routeMeEntity.gripped)
     }
 
     fun transform(routeMeEntityCollection: Collection<RouteMeEntity>): Collection<RouteMe> {

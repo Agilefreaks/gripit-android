@@ -5,7 +5,7 @@ import android.text.format.DateUtils
 import java.text.SimpleDateFormat
 import java.util.*
 
-class RouteMeModel constructor(imageLocation: String = "", date: String = "") : BaseObservable() {
+class RouteMeModel (imageLocation: String = "", date: String = "", val gripped: Boolean) : BaseObservable() {
     var imageLocation: String = imageLocation
         set(value) {
             field = value

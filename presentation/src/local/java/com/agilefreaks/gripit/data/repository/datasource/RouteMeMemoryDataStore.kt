@@ -7,18 +7,20 @@ import java.util.*
 
 class RouteMeMemoryDataStore : RouteMeDataStore {
 
-    override fun routeMeEntities(): Observable<Collection<RouteMeEntity>> {
-        val calendar = Calendar.getInstance()
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-        val time = dateFormat.format(calendar.time)
+    override fun routeMeEntities(routeId: Int): Observable<Collection<RouteMeEntity>> {
+        val random = Random()
+        return Observable.fromArray((0..6).map{ RouteMeEntity(routeId, "placeholder.jpg", getDate(it), random.nextBoolean()) })
+    }
 
-        android.util.Log.wtf("TIME:",time)
+    private fun getDate(it: Int): String {
+        val calendar = GregorianCalendar.getInstance()
+        val random = Random()
 
-        return Observable.fromArray(listOf(RouteMeEntity(1, "placeholder.jpg", time),
-                RouteMeEntity(1, "placeholder.jpg", "28/06/2017 15:00"),
-                RouteMeEntity(2, "placeholder.jpg", "05/06/2017 15:00"),
-                RouteMeEntity(2, "placeholder.jpg", "05/06/2017 15:00"),
-                RouteMeEntity(4, "placeholder.jpg", "05/06/2017 15:00")
-        ))
+        calendar.time = Date()
+        calendar.add(Calendar.DAY_OF_YEAR, -it)
+        calendar.set(Calendar.HOUR, random.nextInt(23))
+        calendar.set(Calendar.MINUTE, random.nextInt(59))
+
+        return SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(calendar.time)
     }
 }

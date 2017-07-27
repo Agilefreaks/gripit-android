@@ -11,6 +11,6 @@ interface ListContract {
     interface ViewModel : Lifecycle.ViewModel {
         fun filter(filter: String)
 
-        fun dispose();
+        fun dispose()
     }
 }

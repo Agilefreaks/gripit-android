@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".routes.RoutesActivity">
+            android:name=".routes.RoutesActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN"/>
@@ -25,7 +26,8 @@
         </activity>
         <activity
             android:name=".details.RouteDetailsActivity"
-            android:theme="@style/AppTheme.Detail">
+            android:theme="@style/AppTheme.Detail"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
     </application>
 

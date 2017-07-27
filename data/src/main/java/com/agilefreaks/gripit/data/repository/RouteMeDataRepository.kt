@@ -10,6 +10,6 @@ import javax.inject.Inject
 class RouteMeDataRepository
 @Inject constructor(val dataStore: RouteMeDataStore, val mapper: RouteMeEntityDataMapper) : RouteMeRepository {
     override fun routeTries(routeId: Int): Observable<Collection<RouteMe>> {
-        return dataStore.routeMeEntities().map { it.filter { it.routeId == routeId } }.map { mapper.transform(it) }
+        return dataStore.routeMeEntities(routeId).map { it.filter { it.routeId == routeId } }.map { mapper.transform(it) }
     }
 }
