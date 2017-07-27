@@ -35,6 +35,11 @@ class RoutesActivity : BaseActivity() {
         routesController.onResume()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        routesController.onDestroy()
+    }
+
     private fun setupDagger() {
         DaggerRoutesComponent.builder().
                 applicationComponent((application as AndroidApplication).applicationComponent).

@@ -35,13 +35,16 @@ class TabsViewModel @Inject constructor(val useCase: GetFilter) : BaseObservable
     }
 
     override fun onViewDetached() {
-        useCase.dispose()
     }
 
     override fun onViewPaused() {
     }
 
     override fun onViewResume() {
+    }
+
+    override fun dispose() {
+        useCase.dispose()
     }
 
     override fun listenToTabSelection(selectionObservable: Observable<TabLayout.Tab>) {

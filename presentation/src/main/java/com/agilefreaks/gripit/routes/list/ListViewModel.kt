@@ -17,13 +17,16 @@ class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable
     }
 
     override fun onViewDetached() {
-        // TODO: Calling dispose on usecase here breaks list filtering
     }
 
     override fun onViewResume() {
     }
 
     override fun onViewPaused() {
+    }
+
+    override fun dispose() {
+        useCase.dispose()
     }
 
     override fun filter(filter: String) {

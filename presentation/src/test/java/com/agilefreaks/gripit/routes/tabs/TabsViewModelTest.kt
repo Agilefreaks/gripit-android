@@ -33,13 +33,6 @@ class TabsViewModelTest {
     }
 
     @Test
-    fun onViewDetachedWillDispose() {
-        tabsViewModel.onViewDetached()
-
-        verify(mockGetFilterUseCase).dispose()
-    }
-
-    @Test
     fun onTabSelectionChanged() {
         val subject = BehaviorProcessor.create<TabLayout.Tab>()
         val subscriber = TestSubscriber<String>()

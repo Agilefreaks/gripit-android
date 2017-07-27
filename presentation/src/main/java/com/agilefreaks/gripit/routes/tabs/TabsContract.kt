@@ -16,5 +16,7 @@ interface TabsContract {
         val tabSelected: BehaviorProcessor<String>
 
         fun listenToTabSelection(selectionObservable: Observable<TabLayout.Tab>)
+
+        fun dispose()
     }
 }

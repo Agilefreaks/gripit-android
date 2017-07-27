@@ -38,4 +38,12 @@ class RoutesControllerTest {
         verify(navigator).navigateToRouteDetails(any<Int>())
     }
 
+    @Test
+    fun onDestroyWillDisposeViewModels() {
+        controller.onDestroy()
+
+        verify(listViewModel).dispose()
+        verify(tabsViewModel).dispose()
+    }
+
 }

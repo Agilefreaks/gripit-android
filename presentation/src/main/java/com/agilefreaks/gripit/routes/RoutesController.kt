@@ -20,4 +20,9 @@ class RoutesController @Inject constructor(val listViewModel: ListContract.ViewM
     fun navigate(route: Route) {
         navigator.navigateToRouteDetails(route.id)
     }
+
+    fun onDestroy() {
+        tabsViewModel.dispose()
+        listViewModel.dispose()
+    }
 }
