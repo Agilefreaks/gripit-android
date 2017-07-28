@@ -6,4 +6,6 @@ import dagger.Provides
 @Module
 class DataSourceModule {
     @Provides fun provideRouteDataStore() : RouteDataStore = MockRouteDataStore()
+
+    @Provides fun provideRouteMeDataStore() : RouteMeDataStore = MockRouteMeDataStore()
 }

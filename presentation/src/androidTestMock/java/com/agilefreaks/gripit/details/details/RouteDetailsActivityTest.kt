@@ -12,6 +12,7 @@ import android.support.test.runner.AndroidJUnit4
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.details.RouteDetailsActivity
 import com.agilefreaks.gripit.matchers.ImageViewHasDrawableMatcher
+import org.hamcrest.CoreMatchers.allOf
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -53,6 +54,14 @@ class RouteDetailsActivityTest {
         onView(withId(R.id.route_picture_header)).perform(click())
 
         routeDetailPicture.check(matches(ImageViewHasDrawableMatcher.hasDrawable()))
+    }
 
+
+    @Test fun testThatRouteMeIsPresent() {
+        onView(allOf(withText("Route Me"), isDescendantOfA(withId(R.id.tabs_route_details)))).perform(click())
+
+        onView(withId(R.id.route_me_thumbnail)).check(matches(ImageViewHasDrawableMatcher.hasDrawable()))
+        onView(withId(R.id.route_me_play)).check(matches(ImageViewHasDrawableMatcher.hasDrawable()))
+        onView(withId(R.id.route_me_date)).check(matches(withText("10/10/2010 13:00")))
     }
 }
