@@ -39,6 +39,13 @@ class RouteDetailsViewModel @Inject constructor(val useCase: GetRouteDetails) : 
                 .addToBackStack(null)
                 .commit()
     }
+    @Suppress("UNUSED_PARAMETER")
+    fun onGripItClick(view: View) {
+    }
+
+    @Suppress("UNUSED_PARAMETER")
+    fun onTryItClick(view: View) {
+    }
 
     inner class RouteDetailsObserver : DefaultObserver<Route>() {
         override fun onNext(item: Route) {
