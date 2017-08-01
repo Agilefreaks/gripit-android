@@ -100,5 +100,38 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:background="?android:attr/selectableItemBackground"
+            android:tint="@color/white"
+            app:fab_labelStyle="@style/Widget.Gripit.Item.Menu"
+            app:srcCompat="@drawable/ic_add_black_24dp">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/grip_it"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/white_pressed"
+                app:fab_icon="@drawable/ic_check_black_24dp"
+                app:fab_title="Grip It"/>
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/try_it"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/white_pressed"
+                app:fab_icon="@drawable/ic_exposure_plus_1_black_24dp"
+                app:fab_title="Try it"/>
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
     </android.support.design.widget.CoordinatorLayout>
 </layout>

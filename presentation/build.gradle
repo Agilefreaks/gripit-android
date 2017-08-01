@@ -78,6 +78,7 @@ dependencies {
     compile "com.google.android:flexbox:$flexBoxVersion"
     compile "com.github.chrisbanes:PhotoView:$photoViewVersion"
     compile "de.hdodenhof:circleimageview:$circleViewVersion"
+    compile "com.getbase:floatingactionbutton:$fabVersion"
 
     // Dependencies for local unit tests
     testCompile "junit:junit:$junitVersion"
