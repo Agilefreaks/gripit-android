@@ -1,6 +1,10 @@
 package com.agilefreaks.gripit.grip
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import com.agilefreaks.gripit.AndroidApplication
 import com.agilefreaks.gripit.R
@@ -16,7 +20,18 @@ class RouteGripActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_route_grip)
         setupDagger()
+        requestPermission()
         initializeActivity(savedInstanceState)
+    }
+
+    private fun requestPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), RouteGripFragment.READ_STORAGE)
+            }
+        }
     }
 
     private fun initializeActivity(savedInstanceState: Bundle?) {
@@ -31,7 +46,6 @@ class RouteGripActivity : AppCompatActivity() {
         }
     }
 
-
     override fun onSaveInstanceState(outState: Bundle?) {
         outState?.putInt(RouteGripActivity.INSTANCE_STATE_PARAM_ROUTE_ID, routeId)
         outState?.putString(RouteGripActivity.INSTANCE_STATE_PARAM_ROUTE_STATE, routeState)
@@ -39,9 +53,6 @@ class RouteGripActivity : AppCompatActivity() {
     }
 
     companion object {
-        val INTENT_EXTRA_PARAM_ROUTE_ID = "com.agilefreaks.INTENT_ROUTE_ID"
-        val INTENT_EXTRA_PARAM_ROUTE_STATE = "com.agilefreaks.INTENT_ROUTE_STATE"
-
         val INSTANCE_STATE_PARAM_ROUTE_ID = "com.agilefreaks.STATE_ROUTE_ID"
         val INSTANCE_STATE_PARAM_ROUTE_STATE = "com.agilefreaks.STATE_ROUTE_STATE"
     }

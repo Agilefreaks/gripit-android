@@ -4,6 +4,7 @@ import android.content.Context
 import android.databinding.BindingAdapter
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
+import android.graphics.Bitmap
 import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -20,6 +21,12 @@ class DatabindingHelper {
             if (imageLocation != null) {
                 Picasso.with(view.context).load("file:///android_asset/" + imageLocation).
                         into(view)
+            }
+        }
+
+        @JvmStatic @BindingAdapter("android:src") fun loadImage(view: ImageView, bitmap: Bitmap?) {
+            if (bitmap != null) {
+                view.setImageBitmap(bitmap)
             }
         }
 
