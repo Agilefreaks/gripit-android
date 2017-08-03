@@ -6,7 +6,6 @@ import com.agilefreaks.gripit.domain.Types
 import com.agilefreaks.gripit.domain.interactor.GetRoutes
 import io.reactivex.functions.Consumer
 import javax.inject.Inject
-
 class ListViewModel @Inject constructor(val useCase: GetRoutes) : BaseObservable(), ListContract.ViewModel {
     lateinit var viewCallback: ListContract.View
     var cachedFilter: String = Types.NoFilter.toString()

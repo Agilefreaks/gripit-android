@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.media.ThumbnailUtils
 import android.net.Uri
 import android.provider.MediaStore
+import android.provider.MediaStore.Video.Thumbnails.MICRO_KIND
 import android.support.design.widget.Snackbar
 import android.support.v4.content.CursorLoader
 import android.view.View
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 
 class RouteGripViewModel @Inject constructor(val context: Context) : BaseObservable(), RouteGripContract.ViewModel {
-    var videoThumbnail: Bitmap? = null
+    val emptyBitmap: Bitmap = Bitmap.createBitmap(MICRO_KIND, MICRO_KIND, Bitmap.Config.ARGB_8888)
+    var videoThumbnail = emptyBitmap
 
     lateinit var viewCallback: RouteGripContract.View
 
@@ -25,7 +27,6 @@ class RouteGripViewModel @Inject constructor(val context: Context) : BaseObserva
 
     override fun onViewAttached(viewCallback: Lifecycle.View) {
         this.viewCallback = viewCallback as RouteGripContract.View
-
     }
 
     override fun onViewDetached() {
@@ -40,20 +41,19 @@ class RouteGripViewModel @Inject constructor(val context: Context) : BaseObserva
     }
 
     fun onThumbnailClick(view: View) {
-        if (videoThumbnail != null) {
-            Snackbar.make(view, context.getString(R.string.remove_video_string), Snackbar.LENGTH_LONG).
-                    setAction("Remove", {
-                        videoThumbnail = null
-                        notifyChange()
-                    }).
-                    show()
-        }
+        if (videoThumbnail.sameAs(emptyBitmap)) return
+
+        Snackbar.make(view, context.getString(R.string.remove_video_string), Snackbar.LENGTH_LONG).
+                setAction("Remove", {
+                    videoThumbnail = emptyBitmap
+                    notifyChange()
+                }).
+                show()
 
     }
 
     override fun handleGalleryResult(data: Uri) {
-
-        Observable.just(ThumbnailUtils.createVideoThumbnail(getRealPath(data), MediaStore.Video.Thumbnails.MICRO_KIND)).
+        Observable.just(ThumbnailUtils.createVideoThumbnail(getRealPath(data), MICRO_KIND)).
                 subscribe({
                     videoThumbnail = it
                     notifyChange()
