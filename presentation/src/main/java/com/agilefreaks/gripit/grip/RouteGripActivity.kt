@@ -29,7 +29,7 @@ class RouteGripActivity : AppCompatActivity() {
                 != PackageManager.PERMISSION_GRANTED) {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), RouteGripFragment.READ_STORAGE)
+                requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), READ_STORAGE)
             }
         }
     }
@@ -53,6 +53,8 @@ class RouteGripActivity : AppCompatActivity() {
     }
 
     companion object {
+        val READ_STORAGE = 1001
+
         val INSTANCE_STATE_PARAM_ROUTE_ID = "com.agilefreaks.STATE_ROUTE_ID"
         val INSTANCE_STATE_PARAM_ROUTE_STATE = "com.agilefreaks.STATE_ROUTE_STATE"
     }

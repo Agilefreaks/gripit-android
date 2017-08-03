@@ -25,6 +25,7 @@ class DatabindingHelper {
         }
 
         @JvmStatic @BindingAdapter("android:src") fun loadImage(view: ImageView, bitmap: Bitmap?) {
+            view.setImageResource(0)
             if (bitmap != null) {
                 view.setImageBitmap(bitmap)
             }

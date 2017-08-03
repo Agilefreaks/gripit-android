@@ -4,10 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
-import android.support.v4.content.CursorLoader
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,10 +18,10 @@ class RouteGripFragment : BaseView(), RouteGripContract.View {
 
     companion object {
         val REQUEST_VIDEO_FROM_GALLERY = 1000
-        val READ_STORAGE = 1001
 
         val PARAM_ROUTE_ID = "param_route_id"
         val PARAM_ROUTE_STATE = "param_state"
+
         fun build(viewModel: RouteGripContract.ViewModel) = RouteGripFragment().also {
             it.viewModel = viewModel
         }
@@ -46,7 +43,6 @@ class RouteGripFragment : BaseView(), RouteGripContract.View {
                               savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.fragment_route_grip, container, false)
 
-
         binding.setVariable(BR.viewModel, viewModel)
 
         return binding.root
@@ -56,25 +52,16 @@ class RouteGripFragment : BaseView(), RouteGripContract.View {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == REQUEST_VIDEO_FROM_GALLERY) {
-                viewModel.handleGalleryResult(getRealPath(data!!.data))
+                viewModel.handleGalleryResult(data!!.data)
             }
         }
     }
 
     override fun loadFromGallery() {
-        val pickIntent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI).also { it.type = "video/*" }
+        val pickIntent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI).also {
+            it.type = "video/*"
+        }
         startActivityForResult(pickIntent, REQUEST_VIDEO_FROM_GALLERY)
-    }
-
-    override fun getRealPath(contentURI: Uri): String {
-        val proj = arrayOf(MediaStore.Images.Media.DATA)
-        val loader = CursorLoader(context, contentURI, proj, null, null, null)
-        val cursor = loader.loadInBackground()
-        val column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-        cursor.moveToFirst()
-        val result = cursor.getString(column_index)
-        cursor.close()
-        return result
     }
 
     private fun setupDagger() {

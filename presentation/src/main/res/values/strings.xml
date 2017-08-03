@@ -16,4 +16,5 @@
 
     <string name="video_label_text">Video</string>
     <string name="load_video_description">Load video</string>
+    <string name="remove_video_string">Remove video?</string>
 </resources>
