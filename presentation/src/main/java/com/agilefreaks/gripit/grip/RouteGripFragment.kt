@@ -66,6 +66,8 @@ class RouteGripFragment : BaseView(), RouteGripContract.View {
 
     override fun getRouteState(): String = arguments.getString(PARAM_ROUTE_STATE)
 
+    override fun getRouteId(): Int = arguments.getInt(PARAM_ROUTE_ID)
+
     private fun setupDagger() {
         DaggerRouteGripComponent.builder().
                 applicationComponent((activity.application as AndroidApplication).applicationComponent).

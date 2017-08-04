@@ -13,17 +13,20 @@ import android.support.v4.content.CursorLoader
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Toast
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.Lifecycle
 import com.agilefreaks.gripit.core.model.RouteState
+import com.agilefreaks.gripit.domain.RouteGrip
+import com.agilefreaks.gripit.domain.interactor.AddRouteGrip
 import io.reactivex.Observable
+import io.reactivex.functions.Consumer
 import javax.inject.Inject
 
 
-class RouteGripViewModel @Inject constructor(val context: Context) : BaseObservable(), RouteGripContract.ViewModel {
+class RouteGripViewModel @Inject constructor(val context: Context, val useCase: AddRouteGrip) : BaseObservable(), RouteGripContract.ViewModel {
     val emptyBitmap: Bitmap = Bitmap.createBitmap(MICRO_KIND, MICRO_KIND, Bitmap.Config.ARGB_8888)
     var videoThumbnail = emptyBitmap
+    var videoLocation = ""
     var comment: ObservableField<String> = ObservableField("")
     var routeState: RouteState = RouteState.GripIt
     var buttonState: ObservableField<String> = ObservableField(routeState.toString())
@@ -67,17 +70,18 @@ class RouteGripViewModel @Inject constructor(val context: Context) : BaseObserva
                     notifyChange()
                 }).
                 show()
-
     }
 
     @Suppress("UNUSED_PARAMETER")
     fun onButtonClick(view: View) {
-
+        useCase.executeSingle(RouteGrip(viewCallback.getRouteId(), videoLocation, comment.get(), false))
     }
 
     override fun handleGalleryResult(data: Uri) {
-        Observable.just(ThumbnailUtils.createVideoThumbnail(getRealPath(data), MICRO_KIND)).
+        val location = getRealPath(data)
+        Observable.just(ThumbnailUtils.createVideoThumbnail(location, MICRO_KIND)).
                 subscribe({
+                    videoLocation = location
                     videoThumbnail = it
                     notifyChange()
                 })

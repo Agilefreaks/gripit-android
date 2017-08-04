@@ -7,6 +7,7 @@ class RouteGripContract {
     interface View : Lifecycle.View {
         fun loadFromGallery()
         fun getRouteState(): String
+        fun getRouteId(): Int
     }
 
     interface ViewModel : Lifecycle.ViewModel {

@@ -22,6 +22,10 @@ abstract class UseCase<T, in Params> internal constructor(
         addDisposable(observable(params).subscribe(onNext))
     }
 
+    fun executeSingle(params: Params) {
+        addDisposable(observable(params).subscribe())
+    }
+
     fun dispose() {
         if (!disposables.isDisposed) {
             disposables.dispose()
