@@ -9,5 +9,6 @@ data class RouteGripEntity constructor(
         var routeId: Int = -1,
         var videoLocation: String = "",
         var comments: String = "",
-        var gripped: Boolean = false
+        var gripped: Boolean = false,
+        var addDate: String = ""
 )

@@ -19,6 +19,7 @@ class RouteGripDataMapper
         return RouteGripEntity(routeId = routeGrip.routeId,
                 videoLocation = routeGrip.videoLocation,
                 comments = routeGrip.comments,
-                gripped = routeGrip.gripped)
+                gripped = routeGrip.gripped
+        )
     }
 }
