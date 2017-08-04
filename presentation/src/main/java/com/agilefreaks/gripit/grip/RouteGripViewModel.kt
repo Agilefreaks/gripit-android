@@ -2,6 +2,7 @@ package com.agilefreaks.gripit.grip
 
 import android.content.Context
 import android.databinding.BaseObservable
+import android.databinding.ObservableField
 import android.graphics.Bitmap
 import android.media.ThumbnailUtils
 import android.net.Uri
@@ -9,7 +10,10 @@ import android.provider.MediaStore
 import android.provider.MediaStore.Video.Thumbnails.MICRO_KIND
 import android.support.design.widget.Snackbar
 import android.support.v4.content.CursorLoader
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.Lifecycle
 import io.reactivex.Observable
@@ -19,6 +23,13 @@ import javax.inject.Inject
 class RouteGripViewModel @Inject constructor(val context: Context) : BaseObservable(), RouteGripContract.ViewModel {
     val emptyBitmap: Bitmap = Bitmap.createBitmap(MICRO_KIND, MICRO_KIND, Bitmap.Config.ARGB_8888)
     var videoThumbnail = emptyBitmap
+    var comment: ObservableField<String> = ObservableField("")
+
+    var watcher: TextWatcher = object : TextWatcherAdapter() {
+        override fun afterTextChanged(text: Editable?) {
+            comment.set(text.toString())
+        }
+    }
 
     lateinit var viewCallback: RouteGripContract.View
 
@@ -49,6 +60,11 @@ class RouteGripViewModel @Inject constructor(val context: Context) : BaseObserva
                     notifyChange()
                 }).
                 show()
+
+    }
+
+    @Suppress("UNUSED_PARAMETER")
+    fun onButtonClick(view: View) {
 
     }
 

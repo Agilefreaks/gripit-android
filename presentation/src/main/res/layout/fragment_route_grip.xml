@@ -119,6 +119,8 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.comment}"
+                    android:addTextChangedListener="@{viewModel.watcher}"
                     android:ems="10"
                     android:hint="@string/comments_optional"
                     android:inputType="textMultiLine"
@@ -137,6 +139,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Grip It"
+                android:onClick="@{viewModel::onButtonClick}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
