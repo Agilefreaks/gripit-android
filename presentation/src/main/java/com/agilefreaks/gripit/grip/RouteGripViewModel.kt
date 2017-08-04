@@ -16,6 +16,7 @@ import android.view.View
 import android.widget.Toast
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.Lifecycle
+import com.agilefreaks.gripit.core.model.RouteState
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -24,6 +25,9 @@ class RouteGripViewModel @Inject constructor(val context: Context) : BaseObserva
     val emptyBitmap: Bitmap = Bitmap.createBitmap(MICRO_KIND, MICRO_KIND, Bitmap.Config.ARGB_8888)
     var videoThumbnail = emptyBitmap
     var comment: ObservableField<String> = ObservableField("")
+    var routeState: RouteState = RouteState.GripIt
+    var buttonState: ObservableField<String> = ObservableField(routeState.toString())
+    var screenTitle: ObservableField<String> = ObservableField(routeState.toString() + "Screen")
 
     var watcher: TextWatcher = object : TextWatcherAdapter() {
         override fun afterTextChanged(text: Editable?) {
@@ -38,6 +42,9 @@ class RouteGripViewModel @Inject constructor(val context: Context) : BaseObserva
 
     override fun onViewAttached(viewCallback: Lifecycle.View) {
         this.viewCallback = viewCallback as RouteGripContract.View
+        routeState = RouteState.valueOf(this.viewCallback.getRouteState())
+        buttonState.set(routeState.toString())
+        screenTitle.set(routeState.toString() + " Screen")
     }
 
     override fun onViewDetached() {

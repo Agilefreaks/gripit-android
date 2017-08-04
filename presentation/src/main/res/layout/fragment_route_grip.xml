@@ -1,22 +1,22 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.agilefreaks.gripit.grip.RouteGripViewModel"/>
+            type="com.agilefreaks.gripit.grip.RouteGripViewModel" />
     </data>
 
-    <android.support.design.widget.CoordinatorLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:focusable="true"
             android:focusableInTouchMode="true"
             tools:context="com.agilefreaks.gripit.grip.RouteGripFragment">
@@ -35,7 +35,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:title="Grip screen">
+                app:title="@{viewModel.screenTitle}">
+
             </android.support.v7.widget.Toolbar>
 
             <TextView
@@ -43,13 +44,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/video_label_text"
                 android:textAppearance="@style/Widget.Gripit.Item.Title"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
             <ImageView
                 android:id="@+id/gallery_icon"
@@ -57,6 +59,7 @@
                 android:layout_height="50dp"
                 android:layout_marginBottom="@dimen/margin_small"
                 android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="@dimen/margin_medium"
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
@@ -67,7 +70,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/video_label"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/ic_video_call_black_24dp"/>
+                app:srcCompat="@drawable/ic_video_call_black_24dp" />
 
             <ImageView
                 android:id="@+id/video_thumbnail"
@@ -84,20 +87,22 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toRightOf="@+id/gallery_icon"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/video_label"/>
+                app:layout_constraintTop_toBottomOf="@+id/video_label" />
 
             <View
                 android:id="@+id/view"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="1dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/video_thumbnail"/>
+                app:layout_constraintTop_toBottomOf="@+id/video_thumbnail" />
 
 
             <android.support.design.widget.TextInputLayout
@@ -119,7 +124,6 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.comment}"
                     android:addTextChangedListener="@{viewModel.watcher}"
                     android:ems="10"
                     android:hint="@string/comments_optional"
@@ -128,26 +132,29 @@
                     android:maxLines="4"
                     android:nestedScrollingEnabled="true"
                     android:overScrollMode="always"
-                    android:scrollbars="vertical"/>
+                    android:scrollbars="vertical"
+                    android:text="@{viewModel.comment}" />
             </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Grip It"
                 android:onClick="@{viewModel::onButtonClick}"
+                android:text="@{viewModel.buttonState}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintVertical_bias="0.0"/>
+                app:layout_constraintVertical_bias="0.0" />
 
         </android.support.constraint.ConstraintLayout>
-    </android.support.design.widget.CoordinatorLayout>
+    </ScrollView>
 </layout>

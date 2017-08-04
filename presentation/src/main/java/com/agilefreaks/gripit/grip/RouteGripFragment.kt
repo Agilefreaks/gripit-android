@@ -64,6 +64,8 @@ class RouteGripFragment : BaseView(), RouteGripContract.View {
         startActivityForResult(pickIntent, REQUEST_VIDEO_FROM_GALLERY)
     }
 
+    override fun getRouteState(): String = arguments.getString(PARAM_ROUTE_STATE)
+
     private fun setupDagger() {
         DaggerRouteGripComponent.builder().
                 applicationComponent((activity.application as AndroidApplication).applicationComponent).

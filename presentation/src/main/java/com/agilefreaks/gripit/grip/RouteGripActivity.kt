@@ -14,7 +14,7 @@ class RouteGripActivity : AppCompatActivity() {
     @Inject lateinit var routeGripFragment: RouteGripFragment
 
     var routeId: Int = 1
-    var routeState: String = "Gripit"
+    var routeState: String = "TryIt"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

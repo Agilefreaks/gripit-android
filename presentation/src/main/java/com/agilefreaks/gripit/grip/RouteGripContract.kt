@@ -6,6 +6,7 @@ import com.agilefreaks.gripit.core.Lifecycle
 class RouteGripContract {
     interface View : Lifecycle.View {
         fun loadFromGallery()
+        fun getRouteState(): String
     }
 
     interface ViewModel : Lifecycle.ViewModel {
