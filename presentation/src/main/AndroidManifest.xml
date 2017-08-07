@@ -17,7 +17,7 @@
 
 
         <activity
-            android:name=".grip.RouteGripActivity"
+            android:name=".routes.RoutesActivity"
             android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
 
@@ -38,7 +38,10 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme.Detail">
         </activity>
-        <!--<activity android:name=".grip.RouteGripActivity"></activity>-->
+        <activity
+            android:name=".grip.RouteGripActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
     </application>
 
 </manifest>

@@ -85,6 +85,7 @@ dependencies {
     compile "android.arch.persistence.room:runtime:$roomVersion"
     kapt "android.arch.persistence.room:compiler:$roomVersion"
     compile "android.arch.persistence.room:rxjava2:$roomVersion"
+    compile "com.getbase:floatingactionbutton:$fabVersion"
 
     // Dependencies for local unit tests
     testCompile "junit:junit:$junitVersion"

@@ -10,7 +10,9 @@
         <!-- Blue -->
     </style>
 
-    <style name="AppTheme" parent="AppTheme.Base"></style>
+    <style name="AppTheme" parent="AppTheme.Base">
+
+    </style>
 
     <style name="Widget"/>
 

@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import com.agilefreaks.gripit.AndroidApplication
 import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
+import com.agilefreaks.gripit.core.model.RouteState
 import com.agilefreaks.gripit.view.BaseView
 
 class RouteGripFragment : BaseView(), RouteGripContract.View {
@@ -26,10 +27,10 @@ class RouteGripFragment : BaseView(), RouteGripContract.View {
             it.viewModel = viewModel
         }
 
-        fun forRoute(routeId: Int, routeState: String): Bundle {
+        fun forRoute(routeId: Int, routeState: RouteState): Bundle {
             val args = Bundle()
             args.putInt(PARAM_ROUTE_ID, routeId)
-            args.putString(PARAM_ROUTE_STATE, routeState)
+            args.putSerializable(PARAM_ROUTE_STATE, routeState)
             return args
         }
     }
@@ -64,7 +65,7 @@ class RouteGripFragment : BaseView(), RouteGripContract.View {
         startActivityForResult(pickIntent, REQUEST_VIDEO_FROM_GALLERY)
     }
 
-    override fun getRouteState(): String = arguments.getString(PARAM_ROUTE_STATE)
+    override fun getRouteState(): RouteState = arguments.getSerializable(PARAM_ROUTE_STATE) as RouteState
 
     override fun getRouteId(): Int = arguments.getInt(PARAM_ROUTE_ID)
 

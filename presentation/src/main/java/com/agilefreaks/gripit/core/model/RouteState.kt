@@ -1,6 +1,8 @@
 package com.agilefreaks.gripit.core.model
 
-enum class RouteState {
+import java.io.Serializable
+
+enum class RouteState : Serializable {
     GripIt {
         override fun toString(): String {
             return "Grip It"

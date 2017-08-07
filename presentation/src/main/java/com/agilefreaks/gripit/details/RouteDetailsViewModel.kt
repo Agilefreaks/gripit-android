@@ -4,6 +4,8 @@ import android.databinding.BaseObservable
 import android.view.View
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.Lifecycle
+import com.agilefreaks.gripit.core.model.RouteState
+import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.details.picture.RoutePictureFragment
 import com.agilefreaks.gripit.domain.Route
 import com.agilefreaks.gripit.domain.interactor.DefaultObserver
@@ -13,6 +15,8 @@ import javax.inject.Inject
 
 class RouteDetailsViewModel @Inject constructor(val useCase: GetRouteDetails) : BaseObservable(), RouteDetailsContract.ViewModel {
     @Inject lateinit var routePictureFragment: RoutePictureFragment
+    @Inject lateinit var navigator: Navigator
+
     lateinit var viewCallback: RouteDetailsContract.View
     var routeName: String = ""
     var routeImageLocation: String = ""
@@ -41,10 +45,12 @@ class RouteDetailsViewModel @Inject constructor(val useCase: GetRouteDetails) : 
     }
     @Suppress("UNUSED_PARAMETER")
     fun onGripItClick(view: View) {
+        navigator.navigateToGripScreen(viewCallback.getRouteId(), RouteState.GripIt)
     }
 
     @Suppress("UNUSED_PARAMETER")
     fun onTryItClick(view: View) {
+        navigator.navigateToGripScreen(viewCallback.getRouteId(), RouteState.TryIt)
     }
 
     inner class RouteDetailsObserver : DefaultObserver<Route>() {

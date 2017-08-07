@@ -44,7 +44,7 @@ class RouteGripViewModel @Inject constructor(val context: Context, val useCase: 
 
     override fun onViewAttached(viewCallback: Lifecycle.View) {
         this.viewCallback = viewCallback as RouteGripContract.View
-        routeState = RouteState.valueOf(this.viewCallback.getRouteState())
+        routeState = viewCallback.getRouteState()
         buttonState.set(routeState.toString())
         screenTitle.set(routeState.toString() + " Screen")
     }

@@ -8,13 +8,14 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import com.agilefreaks.gripit.AndroidApplication
 import com.agilefreaks.gripit.R
+import com.agilefreaks.gripit.core.model.RouteState
 import javax.inject.Inject
 
 class RouteGripActivity : AppCompatActivity() {
     @Inject lateinit var routeGripFragment: RouteGripFragment
 
     var routeId: Int = 1
-    var routeState: String = "TryIt"
+    var routeState: RouteState = RouteState.GripIt
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,18 +38,20 @@ class RouteGripActivity : AppCompatActivity() {
     private fun initializeActivity(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             val transaction = supportFragmentManager.beginTransaction()
+            routeId = intent.getIntExtra(INSTANCE_STATE_PARAM_ROUTE_ID, -1)
+            routeState = intent.getSerializableExtra(INSTANCE_STATE_PARAM_ROUTE_STATE) as RouteState
             routeGripFragment.arguments = RouteGripFragment.forRoute(routeId, routeState)
             transaction.add(R.id.route_grip_content_frame, routeGripFragment)
             transaction.commit()
         } else {
             routeId = savedInstanceState.getInt(RouteGripActivity.INSTANCE_STATE_PARAM_ROUTE_ID)
-            routeState = savedInstanceState.getString(RouteGripActivity.INSTANCE_STATE_PARAM_ROUTE_STATE)
+            routeState = savedInstanceState.getSerializable(RouteGripActivity.INSTANCE_STATE_PARAM_ROUTE_STATE) as RouteState
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
         outState?.putInt(RouteGripActivity.INSTANCE_STATE_PARAM_ROUTE_ID, routeId)
-        outState?.putString(RouteGripActivity.INSTANCE_STATE_PARAM_ROUTE_STATE, routeState)
+        outState?.putSerializable(RouteGripActivity.INSTANCE_STATE_PARAM_ROUTE_STATE, routeState)
         super.onSaveInstanceState(outState)
     }
 
