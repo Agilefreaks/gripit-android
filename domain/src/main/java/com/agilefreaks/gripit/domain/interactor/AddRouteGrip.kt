@@ -1,9 +1,7 @@
 package com.agilefreaks.gripit.domain.interactor
 
-import com.agilefreaks.gripit.domain.Route
 import com.agilefreaks.gripit.domain.RouteGrip
 import com.agilefreaks.gripit.domain.repository.RouteGripRepository
-import com.agilefreaks.gripit.domain.repository.RouteRepository
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import javax.inject.Inject

@@ -4,5 +4,5 @@ import com.agilefreaks.gripit.domain.RouteMe
 import io.reactivex.Observable
 
 interface RouteMeRepository {
-    fun routeTries(routeId: Int) : Observable<Collection<RouteMe>>
+    fun routeTries(routeId: Int): Observable<Collection<RouteMe>>
 }
