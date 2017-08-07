@@ -12,10 +12,14 @@ import com.agilefreaks.gripit.AndroidApplication
 import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.model.RouteState
+import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.view.BaseView
+import kotlinx.android.synthetic.main.fragment_route_grip.*
+import javax.inject.Inject
 
 class RouteGripFragment : BaseView(), RouteGripContract.View {
     override lateinit var viewModel: RouteGripContract.ViewModel
+    @Inject lateinit var navigator: Navigator
 
     companion object {
         val REQUEST_VIDEO_FROM_GALLERY = 1000
@@ -58,11 +62,25 @@ class RouteGripFragment : BaseView(), RouteGripContract.View {
         }
     }
 
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setToolbar()
+    }
+
     override fun loadFromGallery() {
         val pickIntent = Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI).also {
             it.type = "video/*"
         }
         startActivityForResult(pickIntent, REQUEST_VIDEO_FROM_GALLERY)
+    }
+
+
+    fun setToolbar() {
+        val activity = activity as RouteGripActivity
+        activity.setSupportActionBar(grip_toolbar)
+        activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        activity.supportActionBar?.setDisplayShowHomeEnabled(true)
+        grip_toolbar.setNavigationOnClickListener { navigator.navigateToRouteDetails(getRouteId()) }
     }
 
     override fun getRouteState(): RouteState = arguments.getSerializable(PARAM_ROUTE_STATE) as RouteState
