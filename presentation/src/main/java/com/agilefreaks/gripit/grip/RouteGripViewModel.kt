@@ -19,7 +19,6 @@ import com.agilefreaks.gripit.core.model.RouteState
 import com.agilefreaks.gripit.domain.RouteGrip
 import com.agilefreaks.gripit.domain.interactor.AddRouteGrip
 import io.reactivex.Observable
-import io.reactivex.functions.Consumer
 import javax.inject.Inject
 
 
@@ -51,6 +50,7 @@ class RouteGripViewModel @Inject constructor(val context: Context, val useCase: 
     }
 
     override fun onViewDetached() {
+        useCase.dispose()
     }
 
     override fun onViewPaused() {

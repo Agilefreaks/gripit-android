@@ -50,6 +50,10 @@ android {
             variant.setIgnore(true);
         }
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {

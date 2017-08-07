@@ -1,11 +1,9 @@
 package com.agilefreaks.gripit.core.modules
 
-import android.arch.persistence.room.Room
 import android.content.Context
 import android.content.res.AssetManager
 import com.agilefreaks.gripit.AndroidApplication
 import com.agilefreaks.gripit.core.navigation.Navigator
-import com.agilefreaks.gripit.data.repository.datasource.db.RouteGripDatabase
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
