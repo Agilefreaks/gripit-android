@@ -5,8 +5,8 @@ import android.text.format.DateUtils
 import java.text.SimpleDateFormat
 import java.util.*
 
-class RouteMeModel(imageLocation: String = "", date: String = "", val gripped: Boolean) : BaseObservable() {
-    var imageLocation: String = imageLocation
+class RouteMeModel(videoLocation: String = "", date: String = "", val gripped: Boolean) : BaseObservable() {
+    var videoLocation: String = videoLocation
         set(value) {
             field = value
             notifyChange()

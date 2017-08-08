@@ -25,7 +25,7 @@
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_small"
             android:contentDescription="@string/image_thumbnail"
-            app:image="@{routeMe.imageLocation}"
+            android:thumbnail="@{routeMe.videoLocation}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"

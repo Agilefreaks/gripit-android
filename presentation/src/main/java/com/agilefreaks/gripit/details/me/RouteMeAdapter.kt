@@ -29,7 +29,7 @@ class RouteMeAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.V
     }
 
     fun addRouteMe(routeMeList: Collection<RouteMe>) {
-        this.routeMeList.addAll(routeMeList.map { RouteMeModel(it.imageLocation, it.dateAdded, it.gripped) })
+        this.routeMeList.addAll(routeMeList.map { RouteMeModel(it.videoLocation, it.dateAdded, it.gripped) })
         notifyDataSetChanged()
     }
 

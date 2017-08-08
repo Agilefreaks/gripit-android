@@ -5,6 +5,8 @@ import android.databinding.BindingAdapter
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.graphics.Bitmap
+import android.media.ThumbnailUtils
+import android.provider.MediaStore
 import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,6 +16,9 @@ import com.agilefreaks.gripit.BR
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.model.RouteColor
 import com.squareup.picasso.Picasso
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class DatabindingHelper {
     companion object {
@@ -26,6 +31,17 @@ class DatabindingHelper {
 
         @JvmStatic @BindingAdapter("android:src") fun loadImage(view: ImageView, bitmap: Bitmap?) {
             view.setImageBitmap(bitmap)
+        }
+
+        @JvmStatic @BindingAdapter("android:thumbnail") fun createThumbnail(view: ImageView, imageLocation: String?) {
+            if (imageLocation.isNullOrBlank()) return
+
+            Observable.just(ThumbnailUtils.createVideoThumbnail(imageLocation, MediaStore.Video.Thumbnails.MICRO_KIND)).
+                    subscribeOn(Schedulers.newThread()).
+                    observeOn(AndroidSchedulers.mainThread()).
+                    subscribe({
+                        view.setImageBitmap(it)
+                    })
         }
 
         @JvmStatic @BindingAdapter("types") fun loadTypes(viewGroup: ViewGroup, entries: List<String>?) {

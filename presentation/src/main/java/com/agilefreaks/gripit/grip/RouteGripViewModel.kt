@@ -16,13 +16,15 @@ import android.view.View
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.Lifecycle
 import com.agilefreaks.gripit.core.model.RouteState
+import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.domain.RouteGrip
 import com.agilefreaks.gripit.domain.interactor.AddRouteGrip
+import com.agilefreaks.gripit.domain.interactor.DefaultObserver
 import io.reactivex.Observable
 import javax.inject.Inject
 
 
-class RouteGripViewModel @Inject constructor(val context: Context, val useCase: AddRouteGrip) : BaseObservable(), RouteGripContract.ViewModel {
+class RouteGripViewModel @Inject constructor(val context: Context, val useCase: AddRouteGrip, val navigator: Navigator) : BaseObservable(), RouteGripContract.ViewModel {
     val emptyBitmap: Bitmap = Bitmap.createBitmap(MICRO_KIND, MICRO_KIND, Bitmap.Config.ARGB_8888)
     var videoThumbnail = emptyBitmap
     var videoLocation = ""
@@ -50,7 +52,6 @@ class RouteGripViewModel @Inject constructor(val context: Context, val useCase: 
     }
 
     override fun onViewDetached() {
-        useCase.dispose()
     }
 
     override fun onViewPaused() {
@@ -67,6 +68,7 @@ class RouteGripViewModel @Inject constructor(val context: Context, val useCase: 
         Snackbar.make(view, context.getString(R.string.remove_video_string), Snackbar.LENGTH_LONG).
                 setAction("Remove", {
                     videoThumbnail = emptyBitmap
+                    videoLocation = ""
                     notifyChange()
                 }).
                 show()
@@ -74,7 +76,7 @@ class RouteGripViewModel @Inject constructor(val context: Context, val useCase: 
 
     @Suppress("UNUSED_PARAMETER")
     fun onButtonClick(view: View) {
-        useCase.executeSingle(RouteGrip(viewCallback.getRouteId(), videoLocation, comment.get(), false))
+        useCase.execute(CompleteObserver(), RouteGrip(viewCallback.getRouteId(), videoLocation, comment.get(), routeState == RouteState.GripIt))
     }
 
     override fun handleGalleryResult(data: Uri) {
@@ -96,5 +98,11 @@ class RouteGripViewModel @Inject constructor(val context: Context, val useCase: 
         val result = cursor.getString(columnIndex)
         cursor.close()
         return result
+    }
+
+    inner class CompleteObserver : DefaultObserver<Unit>() {
+        override fun onComplete() {
+            navigator.navigateToRouteDetails(viewCallback.getRouteId())
+        }
     }
 }

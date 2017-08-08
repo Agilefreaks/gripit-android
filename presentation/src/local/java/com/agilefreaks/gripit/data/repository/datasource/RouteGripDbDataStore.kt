@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class RouteGripDbDataStore @Inject constructor(val routeGripDatabase: RouteGripDatabase) : RouteGripDataStore {
     override fun addRouteGrip(routeGripEntity: RouteGripEntity): Observable<Unit> {
-        return Observable.fromCallable {
+        return Observable.create { emitter ->
             val calendar = Calendar.getInstance()
             val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
             val time = dateFormat.format(calendar.time)
@@ -18,6 +18,8 @@ class RouteGripDbDataStore @Inject constructor(val routeGripDatabase: RouteGripD
             routeGripEntity.addDate = time
 
             routeGripDatabase.routeGripDao().addRouteGrip(routeGripEntity)
+
+            emitter.onComplete()
         }
     }
 }
