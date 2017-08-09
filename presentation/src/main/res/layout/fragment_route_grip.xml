@@ -38,6 +38,15 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="@{viewModel.screenTitle}">
 
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:layout_gravity="end"
+                    android:onClick="@{viewModel::onButtonClick}"
+                    android:text="@{viewModel.buttonState}"/>
+
             </android.support.v7.widget.Toolbar>
 
             <TextView
@@ -127,6 +136,7 @@
                     android:hint="@string/comments_optional"
                     android:inputType="textMultiLine"
                     android:maxLength="140"
+                    android:minLines="4"
                     android:maxLines="4"
                     android:nestedScrollingEnabled="true"
                     android:overScrollMode="always"
@@ -134,22 +144,6 @@
                     android:text="@{viewModel.comment}"/>
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginTop="8dp"
-                android:onClick="@{viewModel::onButtonClick}"
-                android:text="@{viewModel.buttonState}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-                app:layout_constraintVertical_bias="0.0"/>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
