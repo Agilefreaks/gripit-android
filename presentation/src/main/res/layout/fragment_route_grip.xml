@@ -119,6 +119,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view">
 
                 <EditText
+                    android:id="@+id/text_comments"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:addTextChangedListener="@{viewModel.watcher}"

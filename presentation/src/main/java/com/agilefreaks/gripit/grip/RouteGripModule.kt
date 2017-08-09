@@ -1,7 +1,6 @@
 package com.agilefreaks.gripit.grip
 
 import android.content.Context
-import com.agilefreaks.gripit.core.di.PerActivity
 import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.data.entity.mapper.RouteGripDataMapper
 import com.agilefreaks.gripit.data.repository.RouteGripDataRepository
@@ -13,7 +12,7 @@ import dagger.Provides
 
 @Module
 class RouteGripModule {
-    @Provides @PerActivity fun provideRouteGripViewModel(context: Context, useCase: AddRouteGrip, navigator: Navigator): RouteGripViewModel {
+    @Provides fun provideRouteGripViewModel(context: Context, useCase: AddRouteGrip, navigator: Navigator): RouteGripViewModel {
         return RouteGripViewModel(context, useCase, navigator)
     }
 

@@ -43,6 +43,7 @@ class RouteDetailsViewModel @Inject constructor(val useCase: GetRouteDetails) : 
                 .addToBackStack(null)
                 .commit()
     }
+
     @Suppress("UNUSED_PARAMETER")
     fun onGripItClick(view: View) {
         navigator.navigateToGripScreen(viewCallback.getRouteId(), RouteState.GripIt)

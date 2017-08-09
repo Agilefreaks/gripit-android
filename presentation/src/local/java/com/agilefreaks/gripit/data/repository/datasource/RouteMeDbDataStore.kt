@@ -7,6 +7,7 @@ import javax.inject.Inject
 
 class RouteMeDbDataStore @Inject constructor(val routeGripDatabase: RouteGripDatabase) : RouteMeDataStore {
     override fun routeMeEntities(routeId: Int): Observable<List<RouteGripEntity>> {
+
         return routeGripDatabase.routeGripDao().getGrips(routeId).toObservable()
     }
 }

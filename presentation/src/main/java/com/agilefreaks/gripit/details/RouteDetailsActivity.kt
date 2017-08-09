@@ -10,8 +10,8 @@ class RouteDetailsActivity : AppCompatActivity() {
     @Inject lateinit var routeDetailsFragment: RouteDetailsContract.View
 
     companion object {
-        val INTENT_EXTRA_PARAM_USER_ID = "com.agilefreaks.INTENT_USER_ID"
-        val INSTANCE_STATE_PARAM_USER_ID = "com.agilefreaks.STATE_USER_ID"
+        val INTENT_EXTRA_PARAM_ROUTE_ID = "com.agilefreaks.INTENT_USER_ID"
+        val INSTANCE_STATE_PARAM_ROUTE_ID = "com.agilefreaks.STATE_USER_ID"
     }
 
     var routeId: Int = 0
@@ -24,7 +24,7 @@ class RouteDetailsActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
-        outState?.putInt(INSTANCE_STATE_PARAM_USER_ID, routeId)
+        outState?.putInt(INSTANCE_STATE_PARAM_ROUTE_ID, routeId)
         super.onSaveInstanceState(outState)
     }
 
@@ -32,12 +32,12 @@ class RouteDetailsActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             val fragment = routeDetailsFragment as RouteDetailsFragment
             val transaction = supportFragmentManager.beginTransaction()
-            routeId = intent.getIntExtra(INTENT_EXTRA_PARAM_USER_ID, -1)
+            routeId = intent.getIntExtra(INTENT_EXTRA_PARAM_ROUTE_ID, -1)
             fragment.arguments = RouteDetailsFragment.forRoute(routeId)
             transaction.add(R.id.content_frame, fragment)
             transaction.commit()
         } else {
-            routeId = savedInstanceState.getInt(INSTANCE_STATE_PARAM_USER_ID)
+            routeId = savedInstanceState.getInt(INSTANCE_STATE_PARAM_ROUTE_ID)
         }
     }
 

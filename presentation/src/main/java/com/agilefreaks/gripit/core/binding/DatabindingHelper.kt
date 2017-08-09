@@ -36,11 +36,13 @@ class DatabindingHelper {
         @JvmStatic @BindingAdapter("android:thumbnail") fun createThumbnail(view: ImageView, imageLocation: String?) {
             if (imageLocation.isNullOrBlank()) return
 
-            Observable.just(ThumbnailUtils.createVideoThumbnail(imageLocation, MediaStore.Video.Thumbnails.MICRO_KIND)).
+            Observable.just(ThumbnailUtils.createVideoThumbnail(imageLocation, MediaStore.Video.Thumbnails.MICRO_KIND) ?: 0).
                     subscribeOn(Schedulers.newThread()).
                     observeOn(AndroidSchedulers.mainThread()).
                     subscribe({
-                        view.setImageBitmap(it)
+                        when (it) {
+                            is Bitmap -> view.setImageBitmap(it)
+                        }
                     })
         }
 

@@ -25,7 +25,7 @@ import javax.inject.Inject
 
 
 class RouteGripViewModel @Inject constructor(val context: Context, val useCase: AddRouteGrip, val navigator: Navigator) : BaseObservable(), RouteGripContract.ViewModel {
-    val emptyBitmap: Bitmap = Bitmap.createBitmap(MICRO_KIND, MICRO_KIND, Bitmap.Config.ARGB_8888)
+    var emptyBitmap: Bitmap = Bitmap.createBitmap(MICRO_KIND, MICRO_KIND, Bitmap.Config.ARGB_8888)
     var videoThumbnail = emptyBitmap
     var videoLocation = ""
     var comment: ObservableField<String> = ObservableField("")

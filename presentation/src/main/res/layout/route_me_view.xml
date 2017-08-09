@@ -24,6 +24,7 @@
             android:layout_marginEnd="@dimen/margin_small"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_small"
+            android:src="@drawable/bg_route_me"
             android:contentDescription="@string/image_thumbnail"
             android:thumbnail="@{routeMe.videoLocation}"
             app:layout_constraintBottom_toBottomOf="parent"

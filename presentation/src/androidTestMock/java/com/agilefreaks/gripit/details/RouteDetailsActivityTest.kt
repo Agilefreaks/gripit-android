@@ -1,4 +1,4 @@
-package com.agilefreaks.gripit.details.details
+package com.agilefreaks.gripit.details
 
 import android.content.Intent
 import android.support.test.espresso.Espresso.onView
@@ -30,10 +30,9 @@ class RouteDetailsActivityTest {
 
     @Before fun setup() {
         val intentToLaunch = Intent()
-        intentToLaunch.putExtra(RouteDetailsActivity.INTENT_EXTRA_PARAM_USER_ID, routeId)
+        intentToLaunch.putExtra(RouteDetailsActivity.INTENT_EXTRA_PARAM_ROUTE_ID, routeId)
         activityDetailsRule.launchActivity(intentToLaunch)
     }
-
 
     @Test fun testThatDetailsArePresent() {
         routeToolbar.check(matches(hasDescendant(withText("Route 1"))))
@@ -63,5 +62,12 @@ class RouteDetailsActivityTest {
         onView(withId(R.id.route_me_thumbnail)).check(matches(ImageViewHasDrawableMatcher.hasDrawable()))
         onView(withId(R.id.route_me_play)).check(matches(ImageViewHasDrawableMatcher.hasDrawable()))
         onView(withId(R.id.route_me_date)).check(matches(withText("10/10/2010 13:00")))
+    }
+
+    @Test fun testThatFabButtonIsDisplayed() {
+        onView(withId(R.id.fab)).perform(click())
+
+        onView(withId(R.id.grip_it)).check(matches(isDisplayed()))
+        onView(withId(R.id.try_it)).check(matches(isDisplayed()))
     }
 }
