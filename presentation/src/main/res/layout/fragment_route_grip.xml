@@ -40,10 +40,11 @@
 
                 <Button
                     android:id="@+id/button"
+                    style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
                     android:layout_gravity="end"
+                    android:background="?attr/selectableItemBackground"
                     android:onClick="@{viewModel::onButtonClick}"
                     android:text="@{viewModel.buttonState}"/>
 
@@ -136,8 +137,8 @@
                     android:hint="@string/comments_optional"
                     android:inputType="textMultiLine"
                     android:maxLength="140"
-                    android:minLines="4"
                     android:maxLines="4"
+                    android:minLines="4"
                     android:nestedScrollingEnabled="true"
                     android:overScrollMode="always"
                     android:scrollbars="vertical"
