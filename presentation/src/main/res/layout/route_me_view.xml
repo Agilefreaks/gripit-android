@@ -8,6 +8,9 @@
         <variable
             name="routeMe"
             type="com.agilefreaks.gripit.core.model.RouteMeModel"/>
+        <variable
+            name="viewModel"
+            type="com.agilefreaks.gripit.details.me.RouteMeViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -55,14 +58,16 @@
 
         <ImageView
             android:id="@+id/route_me_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/route_me_icon_dimen"
+            android:layout_height="@dimen/route_me_icon_dimen"
             android:layout_marginBottom="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_medium"
-            android:contentDescription="@string/play_icon"
-            android:clickable="true"
             android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:contentDescription="@string/play_icon"
+            android:onClick="@{viewModel::onIconClick}"
+            android:tag="@{routeMe.videoLocation}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"

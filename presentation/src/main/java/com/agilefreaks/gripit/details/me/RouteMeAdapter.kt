@@ -11,7 +11,7 @@ import com.agilefreaks.gripit.core.model.RouteMeModel
 import com.agilefreaks.gripit.domain.RouteMe
 import javax.inject.Inject
 
-class RouteMeAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RouteMeAdapter @Inject constructor(val routeMeViewModel: RouteMeViewModel) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val routeMeList: MutableList<RouteMeModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -22,6 +22,7 @@ class RouteMeAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.V
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         val viewDataBinding: ViewDataBinding = (holder as RouteMeViewHolder).viewDataBinding
         viewDataBinding.setVariable(BR.routeMe, routeMeList[position])
+        viewDataBinding.setVariable(BR.viewModel, routeMeViewModel)
     }
 
     override fun getItemCount(): Int {

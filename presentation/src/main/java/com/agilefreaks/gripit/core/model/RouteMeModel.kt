@@ -26,5 +26,4 @@ class RouteMeModel(videoLocation: String = "", date: String = "", val gripped: B
                 return field
             }
         }
-
 }

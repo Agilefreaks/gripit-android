@@ -1,6 +1,7 @@
 package com.agilefreaks.gripit.details
 
 import com.agilefreaks.gripit.core.di.PerActivity
+import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.data.entity.mapper.RouteEntityDataMapper
 import com.agilefreaks.gripit.data.entity.mapper.RouteMeEntityDataMapper
 import com.agilefreaks.gripit.data.repository.RouteDataRepository
@@ -36,12 +37,12 @@ class RouteDetailsModule {
         return RoutePictureViewModel()
     }
 
-    @Provides @PerActivity fun provideRouteMeViewModel(useCase: GetRouteMe): RouteMeViewModel {
-        return RouteMeViewModel(useCase)
+    @Provides @PerActivity fun provideRouteMeViewModel(useCase: GetRouteMe, navigator: Navigator): RouteMeViewModel {
+        return RouteMeViewModel(useCase, navigator)
     }
 
-    @Provides fun provideRouteMeAdapter(): RouteMeAdapter {
-        return RouteMeAdapter()
+    @Provides fun provideRouteMeAdapter(routeMeViewModel: RouteMeViewModel): RouteMeAdapter {
+        return RouteMeAdapter(routeMeViewModel)
     }
 
     @Provides fun provideRouteDetailsFragment(routeDetailsViewModel: RouteDetailsViewModel): RouteDetailsContract.View {

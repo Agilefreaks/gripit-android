@@ -2,6 +2,7 @@ package com.agilefreaks.gripit.core.navigation
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import com.agilefreaks.gripit.core.model.RouteState
 import com.agilefreaks.gripit.details.RouteDetailsActivity
 import com.agilefreaks.gripit.grip.RouteGripActivity
@@ -29,5 +30,12 @@ class Navigator @Inject constructor(val applicationContext: Context) {
         intentToLaunch.putExtra(RouteGripActivity.INSTANCE_STATE_PARAM_ROUTE_ID, routeId)
         intentToLaunch.putExtra(RouteGripActivity.INSTANCE_STATE_PARAM_ROUTE_STATE, routeState)
         applicationContext.startActivity(intentToLaunch)
+    }
+
+    fun navitateToVideoPlay(videoPath: String) {
+        val uri = Uri.parse(videoPath)
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        intent.setDataAndType(uri, "video/*")
+        applicationContext.startActivity(intent)
     }
 }

@@ -41,4 +41,5 @@
     <dimen name="route_me_thumbnail_dimen">40dp</dimen>
     <dimen name="gallery_icon_dimen">50dp</dimen>
     <dimen name="video_thumbnail_dimen">50dp</dimen>
+    <dimen name="route_me_icon_dimen">30dp</dimen>
 </resources>
