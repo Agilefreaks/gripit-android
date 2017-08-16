@@ -34,9 +34,12 @@ class DatabindingHelper {
         }
 
         @JvmStatic @BindingAdapter("android:thumbnail") fun createThumbnail(view: ImageView, imageLocation: String?) {
-            if (imageLocation.isNullOrBlank()) return
+            if (imageLocation.isNullOrBlank()) {
+                view.setImageDrawable(view.resources.getDrawable(R.drawable.bg_route_me, view.context.theme))
+                return
+            }
 
-            Observable.defer<Any> { Observable.just(ThumbnailUtils.createVideoThumbnail(imageLocation, MediaStore.Video.Thumbnails.MICRO_KIND) ?: 0)  }.
+            Observable.defer<Any> { Observable.just(ThumbnailUtils.createVideoThumbnail(imageLocation, MediaStore.Video.Thumbnails.MICRO_KIND) ?: 0) }.
                     subscribeOn(Schedulers.io()).
                     observeOn(AndroidSchedulers.mainThread()).
                     subscribe({

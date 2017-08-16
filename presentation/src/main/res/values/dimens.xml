@@ -16,6 +16,7 @@
     <dimen name="text_large">20sp</dimen>
 
     <dimen name="padding_extra_tiny">2dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
 
     <!-- Semantic definitions -->
 
