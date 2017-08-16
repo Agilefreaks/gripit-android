@@ -43,4 +43,5 @@
     <dimen name="gallery_icon_dimen">50dp</dimen>
     <dimen name="video_thumbnail_dimen">50dp</dimen>
     <dimen name="route_me_icon_dimen">30dp</dimen>
+    <dimen name="route_me_padding_bottom">80dp</dimen>
 </resources>
