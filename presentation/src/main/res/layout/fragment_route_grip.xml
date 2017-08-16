@@ -45,6 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:background="?attr/selectableItemBackground"
+                    android:drawableEnd="@{viewModel.routeState == viewModel.routeState.GripIt ?  @drawable/ic_check_white_24dp : @drawable/ic_exposure_plus_1_white_24dp}"
                     android:onClick="@{viewModel::onButtonClick}"
                     android:text="@{viewModel.buttonState}"/>
 
