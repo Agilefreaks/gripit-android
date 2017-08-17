@@ -8,16 +8,19 @@ import dagger.Provides
 
 @Module
 class DataSourceModule {
-    @Provides fun provideRouteDataStore(): RouteDataStore = MockRouteDataStore()
+    @Provides
+    fun provideRouteDataStore(): RouteDataStore = MockRouteDataStore()
 
-    @Provides fun provideRouteMeDataStore(): RouteMeDataStore = MockRouteMeDataStore()
+    @Provides
+    fun provideRouteMeDataStore(database: RouteGripDatabaseMock): RouteMeDataStore = MockRouteMeDataStore(database)
 
-    @Provides fun provideRouteMockGripDataStore(database: RouteGripDatabaseMock): RouteGripDataStore = MockRouteGripDataStore(database)
+    @Provides
+    fun provideRouteMockGripDataStore(database: RouteGripDatabaseMock): RouteGripDataStore = MockRouteGripDataStore(database)
 
-    @Provides fun provideRouteMemoryGripDatabase(context: Context): RouteGripDatabaseMock {
+    @Provides
+    fun provideRouteMemoryGripDatabase(context: Context): RouteGripDatabaseMock {
         return Room
                 .databaseBuilder(context.applicationContext, RouteGripDatabaseMock::class.java, "grip_db_mock")
                 .build()
     }
-
 }

@@ -1,5 +1,6 @@
 package com.agilefreaks.gripit.details.info
 
+import com.agilefreaks.gripit.core.navigation.Navigator
 import com.agilefreaks.gripit.details.me.RouteMeContract
 import com.agilefreaks.gripit.details.me.RouteMeViewModel
 import com.agilefreaks.gripit.domain.RouteMe
@@ -15,10 +16,11 @@ class RouteMeViewModelTest {
     lateinit var routeMeViewModel: RouteMeContract.ViewModel
 
     val mockGetRouteMeUseCase = mock<GetRouteMe>()
+    val mockNavigator = mock<Navigator>()
 
     @Before
     fun setup() {
-        routeMeViewModel = RouteMeViewModel(mockGetRouteMeUseCase)
+        routeMeViewModel = RouteMeViewModel(mockGetRouteMeUseCase, mockNavigator)
     }
 
     @Test
