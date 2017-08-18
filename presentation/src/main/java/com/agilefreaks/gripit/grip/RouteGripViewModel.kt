@@ -25,8 +25,8 @@ import javax.inject.Inject
 
 
 class RouteGripViewModel @Inject constructor(val context: Context, val useCase: AddRouteGrip, val navigator: Navigator) : BaseObservable(), RouteGripContract.ViewModel {
-    var emptyBitmap: Bitmap = Bitmap.createBitmap(MICRO_KIND, MICRO_KIND, Bitmap.Config.ARGB_8888)
-    var videoThumbnail = emptyBitmap
+    var emptyBitmap: Bitmap? = Bitmap.createBitmap(MICRO_KIND, MICRO_KIND, Bitmap.Config.ARGB_8888)
+    var videoThumbnail : Bitmap? = emptyBitmap
     var videoLocation = ""
     var comment: ObservableField<String> = ObservableField("")
     var routeState: RouteState = RouteState.GripIt
@@ -63,7 +63,7 @@ class RouteGripViewModel @Inject constructor(val context: Context, val useCase: 
     }
 
     fun onThumbnailClick(view: View) {
-        if (videoThumbnail.sameAs(emptyBitmap)) return
+        if (videoThumbnail != null && videoThumbnail!!.sameAs(emptyBitmap)) return
 
         Snackbar.make(view, context.getString(R.string.remove_video_string), Snackbar.LENGTH_LONG).
                 setAction("Remove", {
