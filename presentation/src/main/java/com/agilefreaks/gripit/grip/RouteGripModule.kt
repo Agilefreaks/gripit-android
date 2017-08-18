@@ -12,15 +12,15 @@ import dagger.Provides
 
 @Module
 class RouteGripModule {
-    @Provides fun provideRouteGripViewModel(context: Context, useCase: AddRouteGrip, navigator: Navigator): RouteGripViewModel {
-        return RouteGripViewModel(context, useCase, navigator)
-    }
+    @Provides
+    fun provideRouteGripViewModel(context: Context, useCase: AddRouteGrip, navigator: Navigator): RouteGripViewModel =
+            RouteGripViewModel(context, useCase, navigator)
 
-    @Provides fun provideRouteGripFragment(routeDetailsViewModel: RouteGripViewModel): RouteGripFragment {
-        return RouteGripFragment.build(routeDetailsViewModel)
-    }
+    @Provides
+    fun provideRouteGripFragment(routeDetailsViewModel: RouteGripViewModel): RouteGripFragment =
+            RouteGripFragment.build(routeDetailsViewModel)
 
-    @Provides fun provideRouteGripRepository(dataStore: RouteGripDataStore, entityDataMapper: RouteGripDataMapper): RouteGripRepository {
-        return RouteGripDataRepository(dataStore, entityDataMapper)
-    }
+    @Provides
+    fun provideRouteGripRepository(dataStore: RouteGripDataStore, entityDataMapper: RouteGripDataMapper): RouteGripRepository =
+            RouteGripDataRepository(dataStore, entityDataMapper)
 }

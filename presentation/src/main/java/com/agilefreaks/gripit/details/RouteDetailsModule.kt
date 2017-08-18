@@ -25,47 +25,50 @@ import dagger.Provides
 
 @Module
 class RouteDetailsModule {
-    @Provides @PerActivity fun provideRouteDetailsViewModel(getRouteDetails: GetRouteDetails): RouteDetailsContract.ViewModel {
-        return RouteDetailsViewModel(getRouteDetails)
-    }
+    @Provides
+    @PerActivity
+    fun provideRouteDetailsViewModel(getRouteDetails: GetRouteDetails): RouteDetailsContract.ViewModel =
+            RouteDetailsViewModel(getRouteDetails)
 
-    @Provides @PerActivity fun provideRouteInfoViewModel(getRouteDetails: GetRouteDetails): RouteInfoContract.ViewModel {
-        return RouteInfoViewModel(getRouteDetails)
-    }
+    @Provides
+    @PerActivity
+    fun provideRouteInfoViewModel(getRouteDetails: GetRouteDetails): RouteInfoContract.ViewModel =
+            RouteInfoViewModel(getRouteDetails)
 
-    @Provides @PerActivity fun provideRoutePictureViewModel(): RoutePictureViewModel {
-        return RoutePictureViewModel()
-    }
+    @Provides
+    @PerActivity
+    fun provideRoutePictureViewModel(): RoutePictureViewModel = RoutePictureViewModel()
 
-    @Provides @PerActivity fun provideRouteMeViewModel(useCase: GetRouteMe, navigator: Navigator): RouteMeViewModel {
-        return RouteMeViewModel(useCase, navigator)
-    }
+    @Provides
+    @PerActivity
+    fun provideRouteMeViewModel(useCase: GetRouteMe, navigator: Navigator): RouteMeViewModel =
+            RouteMeViewModel(useCase, navigator)
 
-    @Provides fun provideRouteMeAdapter(routeMeViewModel: RouteMeViewModel): RouteMeAdapter {
-        return RouteMeAdapter(routeMeViewModel)
-    }
+    @Provides
+    fun provideRouteMeAdapter(routeMeViewModel: RouteMeViewModel): RouteMeAdapter =
+            RouteMeAdapter(routeMeViewModel)
 
-    @Provides fun provideRouteDetailsFragment(routeDetailsViewModel: RouteDetailsViewModel): RouteDetailsContract.View {
-        return RouteDetailsFragment.build(routeDetailsViewModel)
-    }
+    @Provides
+    fun provideRouteDetailsFragment(routeDetailsViewModel: RouteDetailsViewModel): RouteDetailsContract.View =
+            RouteDetailsFragment.build(routeDetailsViewModel)
 
-    @Provides fun provideRoutePictureFragment(routePictureViewModel: RoutePictureViewModel): RoutePictureFragment {
-        return RoutePictureFragment.build(routePictureViewModel)
-    }
+    @Provides
+    fun provideRoutePictureFragment(routePictureViewModel: RoutePictureViewModel): RoutePictureFragment =
+            RoutePictureFragment.build(routePictureViewModel)
 
-    @Provides fun provideRouteMeFragment(routeMeViewModel: RouteMeViewModel, routeMeAdapter: RouteMeAdapter): RouteMeFragment {
-        return RouteMeFragment.build(routeMeViewModel, routeMeAdapter)
-    }
+    @Provides
+    fun provideRouteMeFragment(routeMeViewModel: RouteMeViewModel, routeMeAdapter: RouteMeAdapter): RouteMeFragment =
+            RouteMeFragment.build(routeMeViewModel, routeMeAdapter)
 
-    @Provides fun provideRouteRepository(dataStore: RouteDataStore, entityDataMapper: RouteEntityDataMapper): RouteRepository {
-        return RouteDataRepository(dataStore, entityDataMapper)
-    }
+    @Provides
+    fun provideRouteRepository(dataStore: RouteDataStore, entityDataMapper: RouteEntityDataMapper): RouteRepository =
+            RouteDataRepository(dataStore, entityDataMapper)
 
-    @Provides fun provideRouteMeRepository(dataStore: RouteMeDataStore, entityDataMapper: RouteMeEntityDataMapper): RouteMeRepository {
-        return RouteMeDataRepository(dataStore, entityDataMapper)
-    }
+    @Provides
+    fun provideRouteMeRepository(dataStore: RouteMeDataStore, entityDataMapper: RouteMeEntityDataMapper): RouteMeRepository =
+            RouteMeDataRepository(dataStore, entityDataMapper)
 
-    @Provides fun provideRouteInfoFragment(routeInfoViewModel: RouteInfoViewModel): RouteInfoFragment {
-        return RouteInfoFragment.build(routeInfoViewModel)
-    }
+    @Provides
+    fun provideRouteInfoFragment(routeInfoViewModel: RouteInfoViewModel): RouteInfoFragment =
+            RouteInfoFragment.build(routeInfoViewModel)
 }

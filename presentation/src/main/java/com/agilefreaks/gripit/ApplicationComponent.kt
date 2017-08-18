@@ -21,7 +21,9 @@ interface ApplicationComponent {
 
     fun serializer(): Serializer
 
-    @Named("executionScheduler") fun executionScheduler(): Scheduler
+    @Named("executionScheduler")
+    fun executionScheduler(): Scheduler
 
-    @Named("postExecutionScheduler") fun postExecutionScheduler(): Scheduler
+    @Named("postExecutionScheduler")
+    fun postExecutionScheduler(): Scheduler
 }

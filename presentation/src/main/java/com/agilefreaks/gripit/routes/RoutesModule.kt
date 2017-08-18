@@ -20,31 +20,34 @@ import dagger.Provides
 
 @Module
 class RoutesModule {
-    @Provides @PerActivity fun provideListViewModel(getRoutesUseCase: GetRoutes): ListContract.ViewModel {
-        return ListViewModel(getRoutesUseCase)
-    }
+    @Provides
+    @PerActivity
+    fun provideListViewModel(getRoutesUseCase: GetRoutes): ListContract.ViewModel =
+            ListViewModel(getRoutesUseCase)
 
-    @Provides @PerActivity fun provideTabsViewModel(getFilter: GetFilter): TabsContract.ViewModel {
-        return TabsViewModel(getFilter)
-    }
+    @Provides
+    @PerActivity
+    fun provideTabsViewModel(getFilter: GetFilter): TabsContract.ViewModel =
+            TabsViewModel(getFilter)
 
-    @Provides @PerActivity fun provideRouteController(listViewModel: ListContract.ViewModel, tabsViewModel: TabsContract.ViewModel, navigator: Navigator): RoutesController {
-        return RoutesController(listViewModel, tabsViewModel, navigator)
-    }
+    @Provides
+    @PerActivity
+    fun provideRouteController(listViewModel: ListContract.ViewModel, tabsViewModel: TabsContract.ViewModel, navigator: Navigator): RoutesController =
+            RoutesController(listViewModel, tabsViewModel, navigator)
 
-    @Provides fun providesTabsView(tabsViewModel: TabsContract.ViewModel): TabsContract.View {
-        return TabsFragment.build(tabsViewModel)
-    }
+    @Provides
+    fun providesTabsView(tabsViewModel: TabsContract.ViewModel): TabsContract.View =
+            TabsFragment.build(tabsViewModel)
 
-    @Provides fun providesListView(listViewModel: ListContract.ViewModel, listAdapter: ListAdapter): ListContract.View {
-        return ListFragment.build(listViewModel, listAdapter)
-    }
+    @Provides
+    fun providesListView(listViewModel: ListContract.ViewModel, listAdapter: ListAdapter): ListContract.View =
+            ListFragment.build(listViewModel, listAdapter)
 
-    @Provides fun provideRouteRepository(routeDataRepository: RouteDataRepository): RouteRepository {
-        return routeDataRepository
-    }
+    @Provides
+    fun provideRouteRepository(routeDataRepository: RouteDataRepository): RouteRepository =
+            routeDataRepository
 
-    @Provides fun provideRouteFilterRepository(routeFilterDataRepository: RouteFilterDataRepository): RouteFilterRepository {
-        return routeFilterDataRepository
-    }
+    @Provides
+    fun provideRouteFilterRepository(routeFilterDataRepository: RouteFilterDataRepository): RouteFilterRepository =
+            routeFilterDataRepository
 }

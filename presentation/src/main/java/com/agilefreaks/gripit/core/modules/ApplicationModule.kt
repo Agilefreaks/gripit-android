@@ -15,19 +15,19 @@ import javax.inject.Singleton
 @Module
 class ApplicationModule(private val application: AndroidApplication) {
 
-    @Provides @Singleton internal fun provideApplicationContext(): Context {
-        return this.application
-    }
+    @Provides
+    @Singleton internal fun provideApplicationContext(): Context = this.application
 
-    @Provides @Singleton internal fun providesAssetManager(context: Context): AssetManager {
-        return context.assets
-    }
+    @Provides
+    @Singleton internal fun providesAssetManager(context: Context): AssetManager = context.assets
 
-    @Provides @Singleton internal fun provideNavigator(applicationContext: Context): Navigator {
-        return Navigator(applicationContext)
-    }
+    @Provides
+    @Singleton internal fun provideNavigator(applicationContext: Context): Navigator =
+            Navigator(applicationContext)
 
-    @Provides @Named("executionScheduler") internal fun provideExecutionScheduler(): Scheduler = Schedulers.io()
+    @Provides
+    @Named("executionScheduler") internal fun provideExecutionScheduler(): Scheduler = Schedulers.io()
 
-    @Provides @Named("postExecutionScheduler") internal fun providePostExecutionScheduler(): Scheduler = AndroidSchedulers.mainThread()
+    @Provides
+    @Named("postExecutionScheduler") internal fun providePostExecutionScheduler(): Scheduler = AndroidSchedulers.mainThread()
 }

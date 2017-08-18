@@ -22,18 +22,24 @@ import io.reactivex.schedulers.Schedulers
 
 class DatabindingHelper {
     companion object {
-        @JvmStatic @BindingAdapter("image") fun loadImage(view: ImageView, imageLocation: String?) {
+        @JvmStatic
+        @BindingAdapter("image")
+        fun loadImage(view: ImageView, imageLocation: String?) {
             if (imageLocation != null) {
                 Picasso.with(view.context).load("file:///android_asset/" + imageLocation).
                         into(view)
             }
         }
 
-        @JvmStatic @BindingAdapter("android:src") fun loadImage(view: ImageView, bitmap: Bitmap?) {
+        @JvmStatic
+        @BindingAdapter("android:src")
+        fun loadImage(view: ImageView, bitmap: Bitmap?) {
             view.setImageBitmap(bitmap)
         }
 
-        @JvmStatic @BindingAdapter("android:thumbnail") fun createThumbnail(view: ImageView, imageLocation: String?) {
+        @JvmStatic
+        @BindingAdapter("android:thumbnail")
+        fun createThumbnail(view: ImageView, imageLocation: String?) {
             if (imageLocation.isNullOrBlank()) {
                 view.setImageDrawable(view.resources.getDrawable(R.drawable.bg_route_me, view.context.theme))
                 return
@@ -49,7 +55,9 @@ class DatabindingHelper {
                     })
         }
 
-        @JvmStatic @BindingAdapter("types") fun loadTypes(viewGroup: ViewGroup, entries: List<String>?) {
+        @JvmStatic
+        @BindingAdapter("types")
+        fun loadTypes(viewGroup: ViewGroup, entries: List<String>?) {
             viewGroup.removeAllViews()
             if (entries != null) {
                 val inflater = viewGroup.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -62,7 +70,9 @@ class DatabindingHelper {
             }
         }
 
-        @JvmStatic @BindingAdapter("color") fun loadColor(view: TextView, routeName: String?) {
+        @JvmStatic
+        @BindingAdapter("color")
+        fun loadColor(view: TextView, routeName: String?) {
             if (routeName != null) {
                 val colorValue = RouteColor.from(routeName.first())
                 when (colorValue) {

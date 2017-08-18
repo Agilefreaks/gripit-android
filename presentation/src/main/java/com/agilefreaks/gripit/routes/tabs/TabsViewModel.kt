@@ -18,7 +18,8 @@ class TabsViewModel @Inject constructor(val useCase: GetFilter) : BaseObservable
     override val routeFilters = ObservableField<Collection<RouteFilter>>(emptyList())
 
     companion object {
-        @JvmStatic @BindingAdapter("android:tabs")
+        @JvmStatic
+        @BindingAdapter("android:tabs")
         fun setTabs(tabs: TabLayout, routeFilters: Collection<RouteFilter>) {
             tabs.removeAllTabs()
             routeFilters.forEach {
