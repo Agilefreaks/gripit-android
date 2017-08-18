@@ -14,6 +14,7 @@
     </data>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/route_me_view_layout"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:clickable="true"

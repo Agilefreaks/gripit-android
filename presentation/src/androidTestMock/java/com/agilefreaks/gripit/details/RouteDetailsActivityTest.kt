@@ -16,7 +16,6 @@ import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.runner.AndroidJUnit4
 import com.agilefreaks.gripit.R
 import com.agilefreaks.gripit.core.model.RouteState
-import com.agilefreaks.gripit.details.RouteDetailsActivity
 import com.agilefreaks.gripit.grip.RouteGripActivity
 import com.agilefreaks.gripit.matchers.ImageViewHasDrawableMatcher
 import org.hamcrest.CoreMatchers.allOf
