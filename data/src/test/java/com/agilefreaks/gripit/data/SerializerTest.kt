@@ -51,7 +51,6 @@ class SerializerTest {
         assertThat(routes1[0].id, `is`(not(routes2[1].id)))
         assertThat(routes1[0].routeSetter, `is`(equalTo(routes2[1].routeSetter)))
         assertThat(routes1[0].type, `is`(equalTo(routes2[1].type)))
-        assertThat(routes1[0].notes, `is`(not(equalTo(routes2[1].notes))))
     }
 
     @Test

@@ -42,7 +42,7 @@ class RouteMeFragment : BaseView(), RouteMeContract.View {
 
     override fun addRouteMe(routeMeList: Collection<RouteMe>) = routeMeAdapter.addRouteMe(routeMeList)
 
-    override fun getRouteId(): Int = arguments.getInt(RouteDetailsFragment.PARAM_ROUTE_ID)
+    override fun getRouteId(): Int = arguments!!.getInt(RouteDetailsFragment.PARAM_ROUTE_ID)
 
     private fun setupRouteCollection() {
         route_me_collection.layoutManager = LinearLayoutManager(this.context)

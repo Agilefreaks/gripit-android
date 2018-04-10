@@ -38,10 +38,10 @@ class RouteDetailsViewModel @Inject constructor(val useCase: GetRouteDetails) : 
 
     @Suppress("UNUSED_PARAMETER")
     fun onPictureClick(view: View) {
-        (viewCallback as RouteDetailsFragment).fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, routePictureFragment)
-                .addToBackStack(null)
-                .commit()
+        (viewCallback as RouteDetailsFragment).fragmentManager?.beginTransaction()
+                ?.replace(R.id.content_frame, routePictureFragment)
+                ?.addToBackStack(null)
+                ?.commit()
     }
 
     @Suppress("UNUSED_PARAMETER")

@@ -36,7 +36,7 @@ class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
         return binding.root
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCollapsibleBar()
         setTabLayout()
@@ -65,12 +65,12 @@ class RouteDetailsFragment : BaseView(), RouteDetailsContract.View {
     }
 
     override fun getRouteId(): Int {
-        return arguments.getInt(PARAM_ROUTE_ID)
+        return arguments!!.getInt(PARAM_ROUTE_ID)
     }
 
     private fun setupDagger() {
         DaggerRouteDetailsComponent.builder().
-                applicationComponent((activity.application as AndroidApplication).applicationComponent).
+                applicationComponent((activity!!.application as AndroidApplication).applicationComponent).
                 build().
                 inject(this)
     }
