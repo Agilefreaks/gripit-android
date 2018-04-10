@@ -24,7 +24,7 @@ class RouteInfoFragment : BaseView(), RouteInfoContract.View {
         super.onCreate(savedInstanceState)
     }
 
-    override fun getRouteId(): Int = arguments.getInt(RouteDetailsFragment.PARAM_ROUTE_ID)
+    override fun getRouteId(): Int = arguments!!.getInt(RouteDetailsFragment.PARAM_ROUTE_ID)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

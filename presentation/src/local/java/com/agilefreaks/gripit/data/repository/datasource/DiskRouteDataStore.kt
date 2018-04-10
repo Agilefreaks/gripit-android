@@ -27,7 +27,7 @@ class DiskRouteDataStore @Inject constructor(var serializer: Serializer, var ass
         }
     }
 
-    fun fetchRouteEntities(): Collection<RouteEntity> {
+    private fun fetchRouteEntities(): Collection<RouteEntity> {
         val routesJson = assetManager.open(DEFAULT_FILE_NAME).bufferedReader().use { it.readText() }
         return serializer.deserialize(routesJson, object : TypeToken<Collection<RouteEntity>>() {})
     }

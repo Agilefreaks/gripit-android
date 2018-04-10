@@ -19,7 +19,7 @@ class RouteMeAdapter @Inject constructor(val routeMeViewModel: RouteMeViewModel)
         return RouteMeViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val viewDataBinding: ViewDataBinding = (holder as RouteMeViewHolder).viewDataBinding
         viewDataBinding.setVariable(BR.routeMe, routeMeList[position])
         viewDataBinding.setVariable(BR.viewModel, routeMeViewModel)

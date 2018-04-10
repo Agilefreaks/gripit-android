@@ -22,7 +22,7 @@ class RoutePictureFragment : BaseView(), RoutePictureContract.View {
         return binding.root
     }
 
-    override fun getRoutePictureLocation(): String = arguments.getString(PARAM_ROUTE_PICTURE)
+    override fun getRoutePictureLocation(): String = arguments!!.getString(PARAM_ROUTE_PICTURE)
 
     companion object {
         val PARAM_ROUTE_PICTURE = "param_route_picture_location"

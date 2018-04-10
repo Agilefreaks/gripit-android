@@ -76,7 +76,7 @@ class RouteGripViewModel @Inject constructor(val context: Context, val useCase: 
 
     @Suppress("UNUSED_PARAMETER")
     fun onButtonClick(view: View) {
-        useCase.execute(CompleteObserver(), RouteGrip(viewCallback.getRouteId(), videoLocation, comment.get(), routeState == RouteState.GripIt))
+        useCase.execute(CompleteObserver(), RouteGrip(viewCallback.getRouteId(), videoLocation, comment.get() ?: "", routeState == RouteState.GripIt))
     }
 
     override fun handleGalleryResult(data: Uri) {
@@ -92,7 +92,7 @@ class RouteGripViewModel @Inject constructor(val context: Context, val useCase: 
     fun getRealPath(uri: Uri): String {
         val projection = arrayOf(MediaStore.Images.Media.DATA)
         val loader = CursorLoader(context, uri, projection, null, null, null)
-        val cursor = loader.loadInBackground()
+        val cursor = loader.loadInBackground() ?: return ""
         val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
         cursor.moveToFirst()
         val result = cursor.getString(columnIndex)

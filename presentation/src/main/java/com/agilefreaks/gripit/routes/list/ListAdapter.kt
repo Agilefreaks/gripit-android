@@ -22,7 +22,7 @@ class ListAdapter @Inject constructor() : RecyclerView.Adapter<RecyclerView.View
         return RouteViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val viewDataBinding: ViewDataBinding = (holder as RouteViewHolder).viewDataBinding
         viewDataBinding.setVariable(BR.route, RouteModel(routes[position]))
 

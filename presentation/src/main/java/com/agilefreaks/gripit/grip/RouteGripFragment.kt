@@ -62,7 +62,7 @@ class RouteGripFragment : BaseView(), RouteGripContract.View {
         }
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setToolbar()
     }
@@ -83,13 +83,13 @@ class RouteGripFragment : BaseView(), RouteGripContract.View {
         grip_toolbar.setNavigationOnClickListener { navigator.navigateToRouteDetails(getRouteId()) }
     }
 
-    override fun getRouteState(): RouteState = arguments.getSerializable(PARAM_ROUTE_STATE) as RouteState
+    override fun getRouteState(): RouteState = arguments!!.getSerializable(PARAM_ROUTE_STATE) as RouteState
 
-    override fun getRouteId(): Int = arguments.getInt(PARAM_ROUTE_ID)
+    override fun getRouteId(): Int = arguments!!.getInt(PARAM_ROUTE_ID)
 
     private fun setupDagger() {
         DaggerRouteGripComponent.builder().
-                applicationComponent((activity.application as AndroidApplication).applicationComponent).
+                applicationComponent((activity!!.application as AndroidApplication).applicationComponent).
                 build().
                 inject(this)
     }
